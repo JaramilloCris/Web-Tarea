@@ -4,8 +4,7 @@ body {
   font-size: 18px;
   font-weight: 400;
   overflow-x: hidden;
-  background-color: white;
-  color: #6C6D6E;
+  color: #2871ba;
 }
 
 a {
@@ -40,7 +39,7 @@ p {
     color: bisque;
 }
 
-.section{
+.t-section{
 
     margin-bottom: 155px;
     position: relative;
@@ -52,6 +51,19 @@ p {
     position: absolute;
     right: -200px;
     top: 45px;
+    display: flex;
+
+}
+
+.tittle{
+
+    text-align: center;
+}
+
+.center-image{
+
+    display: block;
+    margin: auto;
 }
 
 .nav-bar > ul > li {
@@ -87,7 +99,7 @@ p {
 
 .container-content{
     border-radius: 20px;
-    background-color: #d0d0d0;
+    background-color: #ffffff;
 
 }
 
@@ -100,7 +112,7 @@ p {
 
 @media (max-width: 945px) {
   .nav-bar {
-    position: static;
+    position: relative;
   }
 
   .container-content {
@@ -114,3 +126,11 @@ p {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+
+.imagen-mascota{
+
+    float: right;
+    margin-right: 100px;
+    width: 250px;
+}
+
