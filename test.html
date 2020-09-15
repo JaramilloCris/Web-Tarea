@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        function a(){
+
+            var d = document.getElementById("cars");
+            var textSeleted=d.options[d.selectedIndex].text;
+            document.getElementById("text-value").hidden = textSeleted !== "Other";
+        }
+
+    </script>
+</head>
+<body>
+
+     <div>
+        <label for="cars">Region:</label>
+        <select id="cars" name="cars" onchange="a()" required>
+            <option value="">Seleccione una Region</option>
+            <option value="saab">Saab</option>
+            <option value="fiat">Fiat</option>
+            <option value="audi">Other</option>
+        </select>
+         <input type="text" id="text-value" hidden>
+    </div>
+</body>
+</html>

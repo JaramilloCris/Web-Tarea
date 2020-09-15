@@ -41,17 +41,17 @@ p {
 
 .t-section{
 
-    margin-bottom: 155px;
+    margin-bottom: 300px;
     position: relative;
 
 }
 
 .nav-bar{
 
-    position: absolute;
-    right: -200px;
-    top: 45px;
-    display: flex;
+    position: relative;
+    left: 220px;
+    display: block;
+    padding: 10px;
 
 }
 
@@ -83,12 +83,29 @@ p {
 }
 
 .nav-item {
-  display: inline-block;
+
   width: 20px;
   height: 8px;
   background-color: #6893bf;
   vertical-align: middle;
-  margin-right: 20px;
+
+}
+
+.nav-botton{
+
+    border-radius: 6px;
+    background-color: #b3d7ff;
+    border: 1px solid #b3d7ff;
+
+
+}
+
+.nav-botton:hover{
+
+    background-color: #95c6f5;
+    border-radius: 6px;
+    border: 1px solid #b3d7ff;
+
 }
 
 .tm-nav > ul > li.active > a > .tm-nav-deco,
