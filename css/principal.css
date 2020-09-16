@@ -1,14 +1,41 @@
 
+
 body {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  overflow-x: hidden;
-  color: #2871ba;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    overflow-x: hidden;
+    color: #2871ba;
+
+}
+hr.new{
+    
+    border: 1px solid;
+    color: #5DC1B9;
 }
 
 a {
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.font-mascotas{
+
+    color: #424242;
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+h1{
+
+    font-weight: bold;
+    color: #424242;
+}
+
+h2{
+
+    color: #424242;
 }
 
 a:hover,
@@ -17,7 +44,23 @@ a:focus {
 }
 
 p {
-  line-height: 1.8;
+
+
+    color: #424242;
+    height: 40px;
+    line-height: 100px;
+}
+
+.titulo{
+
+    font-weight: bold;
+    height: 50px;
+    font-size: 70px;
+}
+
+.subtitulo{
+    
+    top: 50px;
 }
 
 .principal-container{
@@ -31,6 +74,8 @@ p {
 
     border-radius: 20px;
     background-color: white;
+    padding: 20px;
+
 }
 
 .principal-tittle{
@@ -58,6 +103,7 @@ p {
 .tittle{
 
     text-align: center;
+
 }
 
 .center-image{
@@ -73,7 +119,16 @@ p {
 .nav-bar > ul > li > a {
   display: block;
   padding: 12px 15px;
-  color: #999A9B;
+
+}
+
+.nav-bar > button{
+
+    color: #5DC1B9;
+    font-weight: bold;
+
+
+
 }
 
 .nav-bar > ul > li.active > a,
@@ -86,7 +141,7 @@ p {
 
   width: 20px;
   height: 8px;
-  background-color: #6893bf;
+  background-color: #5DC1B9;
   vertical-align: middle;
 
 }
@@ -94,17 +149,16 @@ p {
 .nav-botton{
 
     border-radius: 6px;
-    background-color: #b3d7ff;
-    border: 1px solid #b3d7ff;
-
-
+    background-color: white;
+    border: none;
+    color: black;
 }
 
 .nav-botton:hover{
 
-    background-color: #95c6f5;
-    border-radius: 6px;
-    border: 1px solid #b3d7ff;
+    background-color: #5DC1B9;
+    border: none;
+    color: white;
 
 }
 
@@ -116,15 +170,21 @@ p {
 
 .container-content{
     border-radius: 20px;
-    background-color: #ffffff;
+    background-color: white;
+    padding: 50px;
+
+}
+
+.container-menu{
+    border-radius: 20px;
+    background-color: white;
+    padding: 10px;
 
 }
 
 .container-me{
 
     padding: 55px;
-
-
 }
 
 @media (max-width: 945px) {
@@ -148,6 +208,42 @@ p {
 
     float: right;
     margin-right: 100px;
+    max-height: 100%;
     width: 250px;
+    border-radius: 30px;
+    height: auto;
+    border: 5px solid #5DC1B9;
 }
+
+.input-style{
+
+    border-radius: 5px;
+    transition: width 0.4s ease-in-out;
+    width: 30%;
+
+
+}
+
+.input-style:focus{
+
+    width: 100%;
+}
+
+.select-custom{
+
+    border-radius: 5px;
+    width: 270px;
+}
+
+.button-sub{
+
+    border: none;
+    color: white;
+    background-color: #5DC1B9;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+
 

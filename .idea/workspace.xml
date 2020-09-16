@@ -22,7 +22,9 @@
     <list default="true" id="e1b32da0-67a6-4c74-a070-065402185f73" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/principal.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/principal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formulario.html" beforeDir="false" afterPath="$PROJECT_DIR$/formulario.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/principal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +56,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\groso\Desktop\Web-Tarea" />
       <recent name="C:\Users\groso\Desktop\Web-Tarea\img" />
     </key>
   </component>
@@ -66,7 +69,8 @@
       <option name="presentableId" value="Default" />
       <updated>1600139338449</updated>
       <workItem from="1600139340226" duration="2176000" />
-      <workItem from="1600181639021" duration="9683000" />
+      <workItem from="1600181639021" duration="9883000" />
+      <workItem from="1600213843514" duration="12896000" />
     </task>
     <servers />
   </component>
@@ -90,9 +94,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1908.-768.1366.728/1920.0.1920.1040@0.0.1920.1040" timestamp="1600139346368" />
-    <state x="2058" y="173" width="1414" height="711" maximized="true" key="dock-window-1" timestamp="1600182777245">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="286" y="357" width="1414" height="711" key="dock-window-1" timestamp="1600214164873">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="2058" y="173" width="1414" height="711" maximized="true" key="dock-window-1/0.0.1920.1040/1908.-768.1366.728/1920.0.1920.1040@0.0.1920.1040" timestamp="1600182777245" />
+    <state x="286" y="357" width="1414" height="711" key="dock-window-1/0.0.1920.1040/1908.-768.1366.728/1920.0.1920.1040@0.0.1920.1040" timestamp="1600214164873" />
   </component>
 </project>

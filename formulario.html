@@ -12,41 +12,35 @@
     <script src="js/principal.js"></script>
 
 </head>
-<body style="background-color: #eeeeee">
+<body style="background-color: #5DC1B9">
 
     <div class="principal-container mx-auto">
 
         <header class="principal-header text-center">
-
-            <h1 class="display-1">Animalitos</h1>
-            <p class="lead">La mejor pagina para buscar mascotas</p>
+            <h1 class="titulo">Formulario de mascotas</h1>
+            <p class="subtitulo">La mejor pagina para buscar mascotas</p>
         </header>
-
+        <br>
         <section class="t-section">
-
-            <div class="container-content">
 
                 <nav class="nav-bar">
 
-                    <button href="index.html" class="nav-botton"><span class="nav-item"></span>Principal</button>
+                    <button href="" class="nav-botton"><span class="nav-item"></span>Principal</button>
                     <button href="" class="nav-botton"><span class="nav-item"></span>Informar mascotas</button>
                     <button href="" class="nav-botton"><span class="nav-item"></span>Ver listado de mascotas</button>
                     <button href="" class="nav-botton"><span class="nav-item"></span>Estadisticas</button>
 
                 </nav>
-            </div>
+
             <br>
-            <div class="container-content">
+            <div class="">
 
-
-                <h1 class="display-4 tittle">Formulario para mascotas</h1>
                 <form>
-
-                    <div class="form-group">
-                        <h4>Domicilio:</h4>
+                    <div class="container-content">
+                        <h2 style="font-weight: bold">Domicilio:</h2>
+                        <br>
                         <div>
-                            <label for="cars">Region:</label>
-                            <select id="cars" name="cars" required>
+                            <select class="select-custom" id="cars" name="cars" required>
                               <option value="">Seleccione una Region</option>
                               <option value="saab">Saab</option>
                               <option value="fiat">Fiat</option>
@@ -55,45 +49,44 @@
                         </div>
 
                         <div>
-                            <label for="id-calle">Nombre Calle:</label>
-                            <input name="calle" id="id-calle" size="100" max="2">
+
+                            <br>
+                            <input class="input-style" name="calle" id="id-calle" size="100" max="2" placeholder="Nombre Calle...">
+
                         </div>
 
                         <div>
-                            <label for="id-numero">Número:</label>
                             <br>
-                            <input name="numero" id="id-numero" size="20" required maxlength="20">
+                            <input class="input-style" name="numero" id="id-numero" size="20" required maxlength="20" placeholder="Número de domicilio...">
                         </div>
                         <div>
-                            <label for="id-sector">Sector:</label>
                             <br>
-                            <input name="sector" id="id-sector" size="100" required maxlength="100">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h4>Datos de contacto: </h4>
-                        <div>
-                            <label for="id-nombre">Nombre:</label>
-                            <br>
-                            <input name="nombre" id="id-nombre" size="100" maxlength="200" required>
-                        </div>
-                        <div>
-                            <label for="id-email">Email:</label>
-                            <br>
-                            <input name="email" id="id-email" size="100" type="email">
-                        </div>
-                        <div>
-                            <label for="id-celular">Número de celular:</label>
-                            <br>
-                            <input name="celular" id="id-celular" size="15" type="tel">
+                            <input class="input-style" name="sector" id="id-sector" size="100" required maxlength="100" placeholder="Sector...">
+
                         </div>
                     </div>
-                    <div class="form-group">
-                        <h4>Información de mascota: </h4>
+                    <br>
+                    <div class="container-content">
+                        <h2 style="font-weight: bold">Datos de contacto: </h2>
                         <div>
-                            <label for="raza">Raza:</label>
                             <br>
-                            <select id="raza" name="tipo-mascota" onchange="hideInput('raza','text-value')" required>
+                            <input class="input-style" placeholder="Nombre..." name="nombre" id="id-nombre" size="100" maxlength="200" required>
+                        </div>
+                        <div>
+                            <br>
+                            <input class="input-style" placeholder="Email..." name="email" id="id-email" size="100" type="email">
+                        </div>
+                        <div>
+                            <br>
+                            <input class="input-style" placeholder="Número de Celular..." name="celular" id="id-celular" size="15" type="tel">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container-content">
+                        <h2 style="font-weight: bold">Información de mascota: </h2>
+                        <div>
+                            <br>
+                            <select id="raza" class="select-custom" name="tipo-mascota" onchange="hideInput('raza','text-value')" required>
                                 <option value="">Seleccione un tipo</option>
                                 <option value="perro">Perro</option>
                                 <option value="gato">Gato</option>
@@ -108,25 +101,23 @@
                             <input hidden id="text-value" size="40" maxlength="40">
                         </div>
                         <div>
-                            <label for="id-annos">Edad en años:</label>
                             <br>
-                            <input name="edad-mascota" id="id-annos" size="5" type="number" min="0">
+                            <input name="edad-mascota" class="input-style" id="id-annos" placeholder="Edad en años..." size="5" type="number" min="0">
                         </div>
                         <div>
-                            <label for="id-color">Color:</label>
                             <br>
-                            <input name="color-mascota" id="id-color" size="30"  maxlength="30" required>
+                            <input name="color-mascota" placeholder="Color..." class="input-style" id="id-color" size="30"  maxlength="30" required>
                         </div>
 
                         <div>
-                            <label for="id-raza">Raza:</label>
                             <br>
-                            <input name="raza-mascota" id="id-raza" size="30" maxlength="30" required>
+                            <input name="raza-mascota" placeholder="Raza..." class="input-style" id="id-raza" size="30" maxlength="30" required>
                         </div>
+                        <br>
                         <div>
                             <label for="id-esterilizado">Esterilizado:</label>
                             <br>
-                            <select id="id-esterilizado" name="esterilizado-mascota" required>
+                            <select id="id-esterilizado" class="input-style" name="esterilizado-mascota" required>
                                 <option value="">Seleccione opción</option>
                                 <option value="si">Sí</option>
                                 <option value="no">No</option>
@@ -134,20 +125,28 @@
                             </select>
                         </div>
                         <div>
+                            <br>
                             <label for="id-vacunado">Vacunas al día:</label>
                             <br>
-                            <select id="id-vacunado" name="vacunas-mascota" required>
+                            <select id="id-vacunado" name="vacunas-mascota" class="input-style" required>
                                 <option value="">Seleccione opción</option>
                                 <option value="si">Sí</option>
                                 <option value="no">No</option>
                                 <option value="no-aplica">No aplica</option>
                             </select>
                         </div>
+                        <br>
                         <div>
                             <label for="id-foto">Foto:</label>
                             <br>
                             <input name="foto-mascota" id="id-foto" size="15" type="file" maxlength="5" required>
+                            <button type="button" onclick="addInputFile(4)">Añadir archivos</button>
                         </div>
+                        <div id="container-file">
+                        </div>
+                        <br>
+                        <button class="button-sub" id="subm" >Enviar</button>
+
                     </div>
                 </form>
             </div>
