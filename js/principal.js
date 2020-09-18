@@ -10,7 +10,7 @@ var numFile = 0;
 function addInputFile(num){
 
     if(numFile<num) {
-        var container = document.getElementById("container-file")
+        var container = document.getElementById("container-file");
         var inputFile = document.createElement("input");
         inputFile.type = "file";
         container.appendChild(inputFile);
@@ -19,11 +19,5 @@ function addInputFile(num){
     }
 }
 
-function clickSub(){
-
-    var button = document.getElementById("subm")
-    button.style.background = '#000000'
-
-}
 
 

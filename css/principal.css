@@ -1,5 +1,3 @@
-
-
 body {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 18px;
@@ -24,7 +22,6 @@ a {
     color: #424242;
     font-weight: bold;
     font-size: 30px;
-
 }
 
 h1{
@@ -54,8 +51,10 @@ p {
 .titulo{
 
     font-weight: bold;
-    height: 50px;
+    height: 100%;
     font-size: 70px;
+    width: 100%;
+
 }
 
 .subtitulo{
@@ -88,17 +87,18 @@ p {
 
     margin-bottom: 300px;
     position: relative;
-
 }
 
 .nav-bar{
 
-    position: relative;
-    left: 220px;
+    margin: auto;
     display: block;
-    padding: 10px;
-
+    width: 100%;
+    height: 100%;
+    padding-right: 50px;
+    padding-left: 50px;
 }
+
 
 .tittle{
 
@@ -112,54 +112,127 @@ p {
     margin: auto;
 }
 
-.nav-bar > ul > li {
-  list-style: none;
-}
-
-.nav-bar > ul > li > a {
-  display: block;
-  padding: 12px 15px;
-
-}
-
 .nav-bar > button{
 
     color: #5DC1B9;
     font-weight: bold;
-
-
-
-}
-
-.nav-bar > ul > li.active > a,
-.nav-bar > ul > li > a:hover,
-.nav-bar > ul > li > a:focus {
-  color: #0299CC;
+    
 }
 
 .nav-item {
 
-  width: 20px;
-  height: 8px;
-  background-color: #5DC1B9;
-  vertical-align: middle;
+    width: 20px;
+    height: 8px;
+    background-color: #5DC1B9;
+    vertical-align: middle;
 
 }
 
-.nav-botton{
+.nav-div{
+    position: center;
+    margin-right: 100px;
+    padding-left: 200px;
+}
 
+.nav-ref{
+
+    margin: auto;
+    height: 100%;
+    display: inline-block;
     border-radius: 6px;
     background-color: white;
     border: none;
-    color: black;
+    color: #5DC1B9;
+    font-weight: bold;
+    padding: 3px 4px;
+    justify-content: space-between;
+    
 }
 
-.nav-botton:hover{
+.font-informado{
+
+    font-size: 30px;
+}
+
+.imagen-mascota{
+
+    float: right;
+    margin-right: 100px;
+    max-height: 100%;
+    width: 30%;
+    border-radius: 30px;
+    height: auto;
+    border: 5px solid #5DC1B9;
+}
+
+
+@media (max-width:960px){
+
+    .nav-ref{
+
+        position: center;
+        height: 100%;
+        display: block;
+        border-radius: 6px;
+        background-color: white;
+        border: none;
+        color: #5DC1B9;
+        font-weight: bold;
+        padding: 3px 40px;
+        justify-content: space-between;
+
+}
+    .nav-item {
+
+        background-color: #5DC1B9;
+        vertical-align: middle;
+
+}
+    .nav-bar{
+        min-width: 700px;
+        max-width: 1000px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 3px 40px;
+
+}
+    .nav-div{
+
+        position: relative;
+        left: -200px;
+        
+}
+    .font-mascotas{
+
+        color: #424242;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .font-informado{
+
+        font-size: 20px;
+    }
+
+    .imagen-mascota{
+
+        float: right;
+        margin-right: 100px;
+        min-width: 30%;
+        max-width: 40%;
+        width: 30%;
+        border-radius: 20px;
+        height: auto;
+        border: 3px solid #5DC1B9;
+}
+}
+
+.nav-ref:hover{
 
     background-color: #5DC1B9;
-    border: none;
     color: white;
-
+    text-decoration: none;
 }
 
 .tm-nav > ul > li.active > a > .tm-nav-deco,
@@ -172,6 +245,7 @@ p {
     border-radius: 20px;
     background-color: white;
     padding: 50px;
+
 
 }
 
@@ -187,32 +261,12 @@ p {
     padding: 55px;
 }
 
-@media (max-width: 945px) {
-  .nav-bar {
-    position: relative;
-  }
 
-  .container-content {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
 
 .principal-imagen{
 
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-}
-
-.imagen-mascota{
-
-    float: right;
-    margin-right: 100px;
-    max-height: 100%;
-    width: 250px;
-    border-radius: 30px;
-    height: auto;
-    border: 5px solid #5DC1B9;
 }
 
 .input-style{
@@ -245,5 +299,34 @@ p {
     font-weight: bold;
 }
 
+/*
+
+CSS para Tablas
+
+ */
+
+table {
+
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+    border: 1px solid #ddd;
+}
+
+th{
+    cursor: pointer;
+
+}
+
+tr:hover{
+
+    background-color: #5DC1B9;
+}
 
 

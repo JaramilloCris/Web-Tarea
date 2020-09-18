@@ -25,6 +25,7 @@
       <change beforePath="$PROJECT_DIR$/formulario.html" beforeDir="false" afterPath="$PROJECT_DIR$/formulario.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/principal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/panton.otf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -70,7 +71,8 @@
       <updated>1600139338449</updated>
       <workItem from="1600139340226" duration="2176000" />
       <workItem from="1600181639021" duration="9883000" />
-      <workItem from="1600213843514" duration="12896000" />
+      <workItem from="1600213843514" duration="13163000" />
+      <workItem from="1600371499066" duration="18357000" />
     </task>
     <servers />
   </component>

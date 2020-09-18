@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tarea1</title>
+
+    <link rel="stylesheet" href="css/principal.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+</head>
+<body style="background-color: #5DC1B9">
+
+    <div class="principal-container mx-auto">
+
+        <header class="principal-header text-center">
+            <h1 class="titulo">Tablas</h1>
+            <p class="subtitulo">La mejor pagina para buscar mascotas</p>
+        </header>
+        <br>
+        <section class="t-section">
+            <nav class="nav-bar">
+                <div class="nav-div">
+                    <a href="index.html" class="nav-ref"><span class="nav-item"></span>Principal</a>
+                    <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
+                    <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
+                </div>
+            </nav>
+
+            <br>
+
+            <div class="container-content">
+
+                <table id="myTable">
+                    <tr>
+                        <th onclick="sortTable(0)">Fecha Ingreso</th>
+                        <th onclick="sortTable(1)">Comuna</th>
+                        <th onclick="sortTable(2)">Nombre Calle</th>
+                        <th onclick="sortTable(3)">Nombre contacto</th>
+                        <th onclick="sortTable(4)">Total Mascotas</th>
+                        <th onclick="sortTable(5)">Total fotos</th>
+                    </tr>
+                    <tr>
+                        <td>20/11/2018</td>
+                        <td>1</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>19/10/2018</td>
+                        <td>2</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>c</td>
+                        <td>3</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>d</td>
+                        <td>4</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>e</td>
+                        <td>1</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                        <td>11</td>
+                    </tr>
+
+
+                </table>
+
+                <button onclick="sortTable()">HOla</button>
+            </div>
+        </section>
+    </div>
+<script>
+    function sortTable(row){
+
+        var table, rows, x, y, ready, i, shouldSwitch, type, count;
+        type = "asc"
+        count = 0;
+        table = document.getElementById("myTable");
+        ready = true;
+        while (ready){
+
+            ready = false;
+            rows = table.rows;
+
+            for(i = 1; i < (rows.length - 1); i++){
+
+                shouldSwitch = false;
+
+                x = rows[i].getElementsByTagName("TD")[row];
+                y = rows[i + 1].getElementsByTagName("TD")[row];
+
+                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase() && type === "asc"){
+
+                    shouldSwitch = true;
+                    break;
+                }
+                else if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase() && type === "desc"){
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch){
+
+                rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
+                ready = true;
+                count++;
+            }
+            else if(count === 0 && type === "asc"){
+
+                type = "desc";
+                ready = true;
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -24,14 +24,13 @@
         <section class="t-section">
 
                 <nav class="nav-bar">
-
-                    <button href="" class="nav-botton"><span class="nav-item"></span>Principal</button>
-                    <button href="" class="nav-botton"><span class="nav-item"></span>Informar mascotas</button>
-                    <button href="" class="nav-botton"><span class="nav-item"></span>Ver listado de mascotas</button>
-                    <button href="" class="nav-botton"><span class="nav-item"></span>Estadisticas</button>
-
+                    <div class="nav-div">
+                        <a href="index.html" class="nav-ref"><span class="nav-item"></span>Principal</a>
+                        <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
+                        <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                        <a href="" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
+                    </div>
                 </nav>
-
             <br>
             <div class="">
 
@@ -51,7 +50,7 @@
                         <div>
 
                             <br>
-                            <input class="input-style" name="calle" id="id-calle" size="100" max="2" placeholder="Nombre Calle...">
+                            <input class="input-style" name="calle" id="id-calle" size="100" maxlength="250" placeholder="Nombre Calle...">
 
                         </div>
 
@@ -102,7 +101,7 @@
                         </div>
                         <div>
                             <br>
-                            <input name="edad-mascota" class="input-style" id="id-annos" placeholder="Edad en años..." size="5" type="number" min="0">
+                            <input name="edad-mascota" class="input-style" id="id-annos" placeholder="Edad en años..." type="number" min="0">
                         </div>
                         <div>
                             <br>
@@ -139,7 +138,7 @@
                         <div>
                             <label for="id-foto">Foto:</label>
                             <br>
-                            <input name="foto-mascota" id="id-foto" size="15" type="file" maxlength="5" required>
+                            <input name="foto-mascota" id="id-foto" size="15" type="file" required>
                             <button type="button" onclick="addInputFile(4)">Añadir archivos</button>
                         </div>
                         <div id="container-file">
