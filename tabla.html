@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/principal.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/principal.js"></script>
 
 </head>
 <body style="background-color: #5DC1B9">
@@ -45,15 +46,15 @@
                     </tr>
                     <tr>
                         <td>20/11/2018</td>
+                        <td>Puente Alto</td>
+                        <td>Pullinque</td>
+                        <td>Fernanda</td>
                         <td>1</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
+                        <td>2</td>
                     </tr>
                     <tr>
                         <td>19/10/2018</td>
-                        <td>2</td>
+                        <td>Pullinque</td>
                         <td>11</td>
                         <td>11</td>
                         <td>11</td>
@@ -86,54 +87,9 @@
 
 
                 </table>
-
-                <button onclick="sortTable()">HOla</button>
             </div>
         </section>
     </div>
-<script>
-    function sortTable(row){
 
-        var table, rows, x, y, ready, i, shouldSwitch, type, count;
-        type = "asc"
-        count = 0;
-        table = document.getElementById("myTable");
-        ready = true;
-        while (ready){
-
-            ready = false;
-            rows = table.rows;
-
-            for(i = 1; i < (rows.length - 1); i++){
-
-                shouldSwitch = false;
-
-                x = rows[i].getElementsByTagName("TD")[row];
-                y = rows[i + 1].getElementsByTagName("TD")[row];
-
-                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase() && type === "asc"){
-
-                    shouldSwitch = true;
-                    break;
-                }
-                else if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase() && type === "desc"){
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-            if (shouldSwitch){
-
-                rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
-                ready = true;
-                count++;
-            }
-            else if(count === 0 && type === "asc"){
-
-                type = "desc";
-                ready = true;
-            }
-        }
-    }
-</script>
 </body>
 </html>

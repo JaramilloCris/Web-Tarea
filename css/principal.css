@@ -4,6 +4,7 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     color: #2871ba;
+    margin: 1.5em;
 
 }
 hr.new{
@@ -306,23 +307,27 @@ CSS para Tablas
  */
 
 table {
-
     width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
 }
 
 th, td {
-    text-align: left;
-    padding: 16px;
-    border: 1px solid #ddd;
+    padding: 1em;
+    border: 1px solid white;
+
+
 }
 
 th{
+    color: white;
     cursor: pointer;
+    background-color: #5DC1B9;
 
 }
+tr:nth-child(odd){background-color: #bebebe;}
+tr:nth-child(even){background-color: #ffffff;}
 
 tr:hover{
 
