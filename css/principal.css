@@ -1,10 +1,18 @@
+@font-face {
+
+    font-family: 'Ranchers';
+    src: url("ranchers.ttf") format('truetype');
+}
+
+@font-face {
+
+    font-family: "DinPro";
+    src: url("dinPro.otf") format('opentype');
+}
+
 body {
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    overflow-x: hidden;
-    color: #2871ba;
-    margin: 1.5em;
+    font-family: DinPro, Ranchers, "Open Sans", Arial, Helvetica, sans-serif;
+
 
 }
 hr.new{
@@ -32,13 +40,8 @@ h1{
 }
 
 h2{
-
+    font-weight: bold;
     color: #424242;
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
 }
 
 p {
@@ -49,11 +52,17 @@ p {
     line-height: 100px;
 }
 
+.main{
+
+    background-color: #5DC1B9;
+
+}
+
 .titulo{
 
-    font-weight: bold;
+    font-weight: bolder;
     height: 100%;
-    font-size: 70px;
+    font-size: 90px;
     width: 100%;
 
 }
@@ -133,6 +142,8 @@ p {
     position: center;
     margin-right: 100px;
     padding-left: 200px;
+    padding-top: 13px;
+
 }
 
 .nav-ref{
@@ -143,23 +154,24 @@ p {
     border-radius: 6px;
     background-color: white;
     border: none;
-    color: #5DC1B9;
+    color: black;
     font-weight: bold;
     padding: 3px 4px;
     justify-content: space-between;
-    
+
 }
 
 .font-informado{
 
     font-size: 30px;
+    color: white;
 }
 
 .imagen-mascota{
 
     float: right;
     margin-right: 100px;
-    max-height: 100%;
+    max-height: 180px;
     width: 30%;
     border-radius: 30px;
     height: auto;
@@ -202,7 +214,6 @@ p {
 
         position: relative;
         left: -200px;
-        
 }
     .font-mascotas{
 
@@ -243,9 +254,11 @@ p {
 }
 
 .container-content{
+
     border-radius: 20px;
     background-color: white;
     padding: 50px;
+    margin-top: 13px;
 
 
 }
@@ -262,8 +275,6 @@ p {
     padding: 55px;
 }
 
-
-
 .principal-imagen{
 
     border-top-left-radius: 20px;
@@ -277,6 +288,11 @@ p {
     width: 30%;
 
 
+}
+
+.input-div{
+
+    padding-bottom: 20px;
 }
 
 .input-style:focus{
@@ -333,5 +349,3 @@ tr:hover{
 
     background-color: #5DC1B9;
 }
-
-
