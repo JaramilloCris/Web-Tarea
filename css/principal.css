@@ -189,6 +189,50 @@ p {
     
 }
 
+.imagen-censo1{
+
+    float: right;
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    shape-margin: 10%;
+    max-height: 180px;
+    width: 30%;
+    border-radius: 30px;
+    height: auto;
+    border: 5px solid #5DC1B9;
+
+}
+.imagen-censo3{
+
+    float: right;
+    position: absolute;
+    top: 44%;
+    left: 60%;
+    shape-margin: 10%;
+    max-height: 180px;
+    width: 30%;
+    border-radius: 30px;
+    height: auto;
+    border: 5px solid #5DC1B9;
+
+}
+.imagen-censo2{
+
+    float: right;
+    position: absolute;
+    top: 75%;
+    left: 60%;
+    shape-margin: 10%;
+    max-height: 180px;
+    width: 30%;
+    border-radius: 30px;
+    height: auto;
+    border: 5px solid #5DC1B9;
+
+}
+
+
 
 @media (max-width:960px){
 
@@ -397,7 +441,11 @@ tr:hover{
     background: #FFF;
     position: relative;
     transition: all 1s ease-in-out;
-    margin: 20% auto;
+    margin-top: 100px;
+    margin-left: 27%;
+    max-height: 80%;
+    overflow-y: scroll;
+
 }
 .cerrar{
     position: absolute;
@@ -408,4 +456,27 @@ tr:hover{
     font-weight: bold;
     text-decoration: none;
     color: #F00;
+}
+
+.font-censo{
+
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0px;
+
+}
+
+hr.censo{
+
+    margin-right: 50%;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    border: 1px solid;
+    color: #5DC1B9;
+    max-width: 50%;
+}
+
+.imagen-censo{
+
+
 }
