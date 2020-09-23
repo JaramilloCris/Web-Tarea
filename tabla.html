@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/principal.css"/>
     <link rel="icon" type="image/jpeg" href="img/simon.jpeg">
-    <link rel="script" href="js/principal.js">
+    <script src="js/principal.js"></script>
 
 </head>
 <body class="main">
@@ -23,10 +23,10 @@
         <section class="t-section">
             <div class="nav-div">
                 <nav class="nav-bar">
-                        <a href="index.html" class="nav-ref"><span class="nav-item"></span>Principal</a>
-                        <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
-                        <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
-                        <a href="" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
+                    <a href="principal.html" class="nav-ref"><span class="nav-item"></span>Principal</a>
+                    <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
+                    <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="estadisticas.html" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
             <div class="container-content">
@@ -40,7 +40,7 @@
                         <th onclick="sortTable(4)">Total Mascotas</th>
                         <th onclick="sortTable(5)">Total fotos</th>
                     </tr>
-                    <tr>
+                    <tr onclick=hrefTable('#popup1')>
                         <td>20/11/2018</td>
                         <td>Puente Alto</td>
                         <td>Pullinque</td>
@@ -48,44 +48,89 @@
                         <td>1</td>
                         <td>2</td>
                     </tr>
-                    <tr>
+                    <tr onclick="hrefTable('#popup2')">
                         <td>19/10/2018</td>
-                        <td>Pullinque</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
+                        <td>Maipu</td>
+                        <td>Rencor</td>
+                        <td>Juan</td>
+                        <td>8</td>
+                        <td>19</td>
                     </tr>
-                    <tr>
-                        <td>c</td>
-                        <td>3</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
+                    <tr onclick="hrefTable('#popup3')">
+                        <td>20/08/2018</td>
+                        <td>La Florida</td>
+                        <td>Vicuña Mackenna</td>
+                        <td>Laura</td>
+                        <td>17</td>
+                        <td>12</td>
                     </tr>
-                    <tr>
-                        <td>d</td>
-                        <td>4</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
+                    <tr onclick="hrefTable('#popup4')">
+                        <td>16/01/2018</td>
+                        <td>Santiago</td>
+                        <td>Alameda</td>
+                        <td>Fernando</td>
+                        <td>14</td>
+                        <td>13</td>
                     </tr>
-                    <tr>
-                        <td>e</td>
-                        <td>1</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
-                        <td>11</td>
+                    <tr onclick="hrefTable('#popup5')">
+                        <td>18/03/2017</td>
+                        <td>La Granja</td>
+                        <td>Mexico</td>
+                        <td>Leonardo</td>
+                        <td>6</td>
+                        <td>12</td>
                     </tr>
 
 
                 </table>
+
             </div>
         </section>
     </div>
-
+        <div id="popup1" class="overlay">
+            <div class="popupBody">
+                <h2>Título de la ventana</h2>
+                <a class="cerrar" href="#">&times;</a>
+                <div class="popupContent">
+                    <p>Este es el contenido</p>
+                </div>
+            </div>
+        </div>
+        <div id="popup2" class="overlay">
+            <div class="popupBody">
+                <h2>Título de la ventana</h2>
+                <a class="cerrar" href="#">&times;</a>
+                <div class="popupContent">
+                    <p>Este es el contenido</p>
+                </div>
+            </div>
+        </div>
+        <div id="popup3" class="overlay">
+            <div class="popupBody">
+                <h2>Título de la ventana</h2>
+                <a class="cerrar" href="#">&times;</a>
+                <div class="popupContent">
+                    <p>Este es el contenido</p>
+                </div>
+            </div>
+        </div>
+        <div id="popup4" class="overlay">
+            <div class="popupBody">
+                <h2>Título de la ventana</h2>
+                <a class="cerrar" href="#">&times;</a>
+                <div class="popupContent">
+                    <p>Este es el contenido</p>
+                </div>
+            </div>
+        </div>
+        <div id="popup5" class="overlay">
+            <div id="popupBody5">
+                <h2>Título de la ventana</h2>
+                <a id="cerrar5" href="#">&times;</a>
+                <div class="popupContent">
+                    <p>Este es el contenido</p>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

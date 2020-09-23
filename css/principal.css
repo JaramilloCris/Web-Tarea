@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
 @font-face {
 
     font-family: 'Ranchers';
@@ -178,6 +180,15 @@ p {
     border: 5px solid #5DC1B9;
 }
 
+.imagen-graficos{
+    
+    border: 5px solid #5DC1B9;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-left: 25%;
+    
+}
+
 
 @media (max-width:960px){
 
@@ -260,14 +271,12 @@ p {
     padding: 50px;
     margin-top: 13px;
 
-
 }
 
 .container-menu{
     border-radius: 20px;
     background-color: white;
     padding: 10px;
-
 }
 
 .container-me{
@@ -284,9 +293,6 @@ p {
 .input-style{
 
     border-radius: 5px;
-    transition: width 0.4s ease-in-out;
-    width: 30%;
-
 
 }
 
@@ -297,7 +303,9 @@ p {
 
 .input-style:focus{
 
-    width: 100%;
+    width: max-content;
+
+
 }
 
 .select-custom{
@@ -314,6 +322,23 @@ p {
     border-radius: 5px;
     padding: 10px 20px;
     font-weight: bold;
+}
+
+.button-sub-out{
+
+    margin-left: 00px;
+    margin-top: 10px;
+    border: none;
+    color: #5DC1B9;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.form-botones{
+
+    margin-left: 300px;
 }
 
 /*
@@ -348,4 +373,39 @@ tr:nth-child(even){background-color: #ffffff;}
 tr:hover{
 
     background-color: #5DC1B9;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+.popupBody{
+    width: 46%;
+    padding: 2%;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #CCC;
+    background: #FFF;
+    position: relative;
+    transition: all 1s ease-in-out;
+    margin: 20% auto;
+}
+.cerrar{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #F00;
 }

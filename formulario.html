@@ -20,18 +20,17 @@
             <h1 class="titulo">Formulario de mascotas</h1>
             <p class="subtitulo">La mejor pagina para buscar mascotas</p>
         </header>
-        <section class="t-section">
+        <section id="principal-section" class="t-section">
             <div class="nav-div">
                 <nav class="nav-bar">
-                        <a href="index.html" class="nav-ref"><span class="nav-item"></span>Principal</a>
-                        <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
-                        <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
-                        <a href="" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
+                    <a href="principal.html" class="nav-ref"><span class="nav-item"></span>Principal</a>
+                    <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
+                    <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="estadisticas.html" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
-            <div class="">
-
-                <form>
+            <div id="principal-div">
+                <form id="form1">
                     <div class="container-content">
                         <h2 style="font-weight: bold">Domicilio:</h2>
                         <br>
@@ -83,7 +82,7 @@
                             <input class="input-style" placeholder="Número de Celular..." name="celular" id="id-celular" size="15" type="tel">
                         </div>
                     </div>
-                    <div class="container-content">
+                    <div id="div-mascota" class="container-content">
                         <h2 style="font-weight: bold">Información de mascota: </h2>
                         <div class="input-div">
                             <br>
@@ -139,12 +138,16 @@
                         <div id="container-file">
                         </div>
                         <br>
-                        <button class="button-sub" id="subm" >Enviar</button>
-
                     </div>
                 </form>
+                <div id="botones-form" class="form-botones">
+                    <button class="button-sub-out" id="clone-mascota" onclick="clonar('div-mascota')" >Informar otra mascota en este domicilio</button>
+                    <button class="button-sub-out" id="subm" type="submit" form="form1" >Enviar</button>
+                </div>
             </div>
         </section>
+
+
     </div>
 </body>
 </html>

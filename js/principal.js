@@ -99,4 +99,19 @@ function buscar_ciudad(){
 }
 
 
+function hrefTable(tipo){
 
+    document.location = tipo;
+}
+
+
+function clonar(id) {
+    var c = document.getElementById(id);
+    var clon = c.cloneNode(id);
+    var principal = document.getElementById("principal-section");
+    var botones = document.getElementById("botones-form");
+    principal.appendChild(clon);
+    principal.appendChild(botones);
+
+
+}

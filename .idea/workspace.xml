@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1b32da0-67a6-4c74-a070-065402185f73" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/css/ranchers.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/bootstrap.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/principal.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/principal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/formulario.html" beforeDir="false" afterPath="$PROJECT_DIR$/formulario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/principal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tabla.html" beforeDir="false" afterPath="$PROJECT_DIR$/tabla.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Crear_Ventanas_Popup_Con_Puro_CSS_Sin_JavaScript_CableNaranja" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -78,6 +76,7 @@
       <workItem from="1600371499066" duration="18357000" />
       <workItem from="1600455623838" duration="5200000" />
       <workItem from="1600737865584" duration="5108000" />
+      <workItem from="1600884795417" duration="8166000" />
     </task>
     <servers />
   </component>
@@ -101,10 +100,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1908.-768.1366.728/1920.0.1920.1040@0.0.1920.1040" timestamp="1600739097832" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1600139346368">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1600885382589">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1908.-768.1366.728/1920.0.1920.1040@0.0.1920.1040" timestamp="1600139346368" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1908.-768.1366.728/1920.0.1920.1040@0.0.1920.1040" timestamp="1600885382589" />
     <state x="286" y="357" width="1414" height="711" key="dock-window-1" timestamp="1600214164873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
