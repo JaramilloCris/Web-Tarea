@@ -142,12 +142,23 @@
                 </form>
                 <div id="botones-form" class="form-botones">
                     <button class="button-sub-out" id="clone-mascota" onclick="clonar('div-mascota')" >Informar otra mascota en este domicilio</button>
-                    <button class="button-sub-out" id="subm" type="submit" form="form1" >Enviar</button>
+                    <button class="button-sub-out" id="subm" onclick="hrefTable('#popup-verificacion')" >Enviar</button>
+                </div>
+                <div id="popup-verificacion" class="overlay-ver">
+
+                    <div class="popupBody-ver">
+                        <h4 class="tittle">¿Está seguro que desea enviar esta información?</h4>
+                        <a class="cerrar" href="#">&times;</a>
+                        <div class="popupContent">
+                            <div class="ver-botones">
+                                <button class="ver-button" type="submit" form="form1" onclick="hrefTable('#')">Si</button>
+                                <button class="ver-button" onclick="hrefTable('#')">No</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-
     </div>
 </body>
 </html>

@@ -104,6 +104,14 @@ function hrefTable(tipo){
     document.location = tipo;
 }
 
+function submit(form){
+
+    var formulario = document.getElementById(form);
+    formulario.submit();
+
+
+}
+
 
 function clonar(id) {
     var c = document.getElementById(id);
