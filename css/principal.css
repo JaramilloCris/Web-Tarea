@@ -194,9 +194,9 @@ p {
     top: 15%;
     left: 60%;
     max-height: 180px;
-    width: 30%;
+
     border-radius: 30px;
-    height: auto;
+
     border: 5px solid #5DC1B9;
 
 }
@@ -204,13 +204,11 @@ p {
 
     float: right;
     position: absolute;
-    top: 44%;
+    top: 55%;
     left: 60%;
     shape-margin: 10%;
     max-height: 180px;
-    width: 30%;
     border-radius: 30px;
-    height: auto;
     border: 5px solid #5DC1B9;
 
 }
@@ -218,13 +216,13 @@ p {
 
     float: right;
     position: absolute;
-    top: 75%;
+    top: 95%;
     left: 60%;
     shape-margin: 10%;
     max-height: 180px;
-    width: 30%;
+
     border-radius: 30px;
-    height: auto;
+
     border: 5px solid #5DC1B9;
 
 }
@@ -475,7 +473,8 @@ tr:hover{
 .font-censo{
 
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
+
 
 }
 

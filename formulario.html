@@ -99,7 +99,7 @@
                                 <option value="araña">Araña</option>
                                 <option value="otro">Otro</option>
                             </select>
-                            <input hidden id="text-value" size="40" maxlength="40">
+                            <input hidden id="text-value" class="input-style" size="40" maxlength="40" placeholder="Otro...">
                         </div>
                         <div class="input-div">
                             <input name="edad-mascota" class="input-style" id="id-annos" placeholder="Edad en años..." type="number" min="0">
@@ -146,14 +146,24 @@
                     <button class="button-sub-out" id="subm" onclick="hrefTable('#popup-verificacion')" >Enviar</button>
                 </div>
                 <div id="popup-verificacion" class="overlay-ver">
-
                     <div class="popupBody-ver">
                         <h4 class="tittle">¿Está seguro que desea enviar esta información?</h4>
                         <a class="cerrar" href="#">&times;</a>
                         <div class="popupContent">
                             <div class="ver-botones">
-                                <button class="ver-button" type="submit" form="form1" onclick="hrefTable('#')">Sí, estoy total y absolutamente seguro</button>
+                                <button class="ver-button" type="submit" form="form1" onclick="hrefTable('#popup-validado')">Sí, estoy total y absolutamente seguro</button>
                                 <button class="ver-button" onclick="hrefTable('#')">No estoy seguro, quiero volver al formulario</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="popup-validado" class="overlay-ver">
+                    <div class="popupBody-ver">
+                        <h4 class="tittle">Hemos recibido su información, muchas gracias por colaborar</h4>
+                        <a class="cerrar" href="#">&times;</a>
+                        <div class="popupContent">
+                            <div class="form-botones">
+                                <button class="ver-button" onclick="hrefTable('principal.html')">Volver al inicio</button>
                             </div>
                         </div>
                     </div>
