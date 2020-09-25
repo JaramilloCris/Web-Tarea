@@ -132,17 +132,18 @@
                         </div>
                         <div>
                             <label for="id-foto">Foto:</label>
+
                             <br>
                             <input name="foto-mascota" id="id-foto" size="15" type="file" required>
-                            <button class="button-sub" type="button" onclick="addInputFile(4)">Añadir archivos</button>
+                            <button class="button-sub" type="button" id="addFile0" onclick="addInputFile(4, 'container-file0')">Añadir archivos</button>
                         </div>
-                        <div id="container-file">
+                        <div id="container-file0">
                         </div>
                         <br>
                     </div>
                 </form>
                 <div id="botones-form" class="form-botones">
-                    <button class="button-sub-out" id="clone-mascota" onclick="clonar('div-mascota')" >Informar otra mascota en este domicilio</button>
+                    <button class="button-sub-out" id="clone-mascota" type="button" onclick="clonar('div-mascota')" >Informar otra mascota en este domicilio</button>
                     <button class="button-sub-out" id="subm" onclick="hrefTable('#popup-verificacion')" >Enviar</button>
                 </div>
                 <div id="popup-verificacion" class="overlay-ver">

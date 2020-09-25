@@ -48,15 +48,16 @@ function hideInput(selectId,inputId){
 
 var numFile = 0;
 
-function addInputFile(num){
+function addInputFile(num, container){
 
-    if(numFile<num) {
-        var container = document.getElementById("container-file");
-        var inputFile = document.createElement("input");
-        inputFile.type = "file";
-        container.appendChild(inputFile);
-        container.appendChild(document.createElement("br"));
-        numFile = numFile + 1;
+
+        var container = document.getElementById(container);
+        if(container.childElementCount < 7){
+            var inputFile = document.createElement("input");
+            inputFile.type = "file";
+            container.appendChild(inputFile);
+            container.appendChild(document.createElement("br"));
+            numFile = numFile + 1;
     }
 }
 var regionesConComunas = {
@@ -111,15 +112,37 @@ function submit(form){
 
 
 }
-
-
+var contador = 0;
 function clonar(id) {
-    var c = document.getElementById(id);
-    var clon = c.cloneNode(id);
-    var principal = document.getElementById("principal-section");
+
+    const divMascotas = document.getElementById('div-mascota');
+    var clon = divMascotas.cloneNode(true);
+    var botonAdd = document.getElementById("addFile" + contador.toString() );
+    var containerFile = document.getElementById("container-file" + contador.toString() );
+    contador = contador + 1;
+    botonAdd.id = "addFile" + contador.toString();
+    var contenedor = "container-file" + contador.toString();
+    botonAdd.setAttribute("onClick", "addInputFile(4,'"+contenedor+"')");
+    containerFile.id = "container-file" + contador.toString();
+
+    //document.getElementById("id-annos").id = "pico";
+    var principal = document.getElementById("form1");
     var botones = document.getElementById("botones-form");
     principal.appendChild(clon);
     principal.appendChild(botones);
 
+}
 
+
+function showImage(idImage){
+
+    var popup = document.getElementById(idImage);
+    popup.style.visibility = "visible";
+
+}
+
+function hideImage(idImage){
+
+    var popup = document.getElementById(idImage);
+    popup.style.visibility = "hidden";
 }
