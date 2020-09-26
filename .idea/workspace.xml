@@ -23,13 +23,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/principal.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/principal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/formulario.html" beforeDir="false" afterPath="$PROJECT_DIR$/formulario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/agus.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/gato1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/perro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/perro2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/simon.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/principal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/principal.html" beforeDir="false" afterPath="$PROJECT_DIR$/principal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tabla.html" beforeDir="false" afterPath="$PROJECT_DIR$/tabla.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +81,8 @@
       <workItem from="1600908538215" duration="636000" />
       <workItem from="1600909250258" duration="7526000" />
       <workItem from="1600995135367" duration="17042000" />
-      <workItem from="1601047684129" duration="4180000" />
+      <workItem from="1601047684129" duration="4807000" />
+      <workItem from="1601161717824" duration="1594000" />
     </task>
     <servers />
   </component>

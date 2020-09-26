@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-
 @font-face {
 
     font-family: 'Ranchers';
@@ -14,8 +12,7 @@
 
 body {
     font-family: DinPro, Ranchers, "Open Sans", Arial, Helvetica, sans-serif;
-
-
+    
 }
 hr.new{
     
@@ -75,7 +72,6 @@ p {
 .principal-container{
     max-width: 1000px;
     width: 100%;
-
 
 }
 
@@ -139,7 +135,7 @@ p {
 }
 
 .nav-div{
-    position: center;
+
     margin-right: 100px;
     padding-left: 200px;
     padding-top: 13px;
@@ -196,9 +192,7 @@ p {
     top: 15%;
     left: 60%;
     max-height: 180px;
-
     border-radius: 30px;
-
     border: 5px solid #5DC1B9;
 
 }
@@ -208,7 +202,6 @@ p {
     position: absolute;
     top: 55%;
     left: 60%;
-    shape-margin: 10%;
     max-height: 180px;
     border-radius: 30px;
     border: 5px solid #5DC1B9;
@@ -220,11 +213,8 @@ p {
     position: absolute;
     top: 95%;
     left: 60%;
-    shape-margin: 10%;
     max-height: 180px;
-
     border-radius: 30px;
-
     border: 5px solid #5DC1B9;
 
 }
@@ -256,7 +246,6 @@ p {
     background-color: #5DC1B9;
     padding: 50px;
     margin-top: 13px;
-
 
 }
 
@@ -292,7 +281,6 @@ p {
 
     width: max-content;
 
-
 }
 
 .select-custom{
@@ -320,7 +308,6 @@ p {
     padding: 5px 20px;
     font-weight: bold;
 
-
 }
 
 .button-sub-out{
@@ -341,7 +328,6 @@ p {
 }
 
 .ver-botones{
-    position: center;
     margin-left:5% ;
 }
 
@@ -361,7 +347,6 @@ table {
 th, td {
     padding: 1em;
     border: 1px solid white;
-
 
 }
 
@@ -390,6 +375,7 @@ tr:hover{
     opacity: 0;
 }
 .overlay:target {
+
     visibility: visible;
     opacity: 1;
 }
@@ -419,12 +405,10 @@ tr:hover{
     cursor: pointer;
 
 }
-
 .font-censo{
 
     font-weight: bold;
     font-size: 20px;
-
 
 }
 
@@ -437,7 +421,6 @@ hr.censo{
     color: #5DC1B9;
     max-width: 50%;
 }
-
 .overlay-ver {
     position: fixed;
     top: 0;
@@ -468,9 +451,7 @@ hr.censo{
     max-height: 800%;
     max-width: 100%;
 
-
 }
-
 .img800{
 
     position: absolute;
@@ -478,15 +459,22 @@ hr.censo{
     left: 3%;
     visibility: hidden;
     transition: all 200ms;
+}
 
+.imagen-ampliada{
 
+    position: relative;
+    top: 100%;
+    margin-top: 1%;
+    background-color: #5DC1B9;
+    border-radius: 5px;
+    padding: 50px;
 }
 
 @media (max-width:960px){
 
     .nav-ref{
 
-        position: center;
         height: 100%;
         display: block;
         border-radius: 6px;
@@ -496,13 +484,11 @@ hr.censo{
         font-weight: bold;
         padding: 3px 40px;
         justify-content: space-between;
-
 }
     .nav-item {
 
         background-color: #5DC1B9;
         vertical-align: middle;
-
 }
     .nav-bar{
         min-width: 700px;
@@ -511,7 +497,6 @@ hr.censo{
         width: 100%;
         height: 100%;
         padding: 3px 40px;
-
 }
     .nav-div{
 
@@ -524,12 +509,10 @@ hr.censo{
         font-weight: bold;
         font-size: 20px;
     }
-
     .font-informado{
 
         font-size: 20px;
     }
-
     .imagen-mascota {
 
         float: right;
@@ -544,12 +527,10 @@ hr.censo{
 
         border: 3px solid #5DC1B9;
     }
-
     .popupBody-ver{
 
         width: 40%;
         height: 60%;
-
         border-radius: 15px;
         box-shadow: 0 0 5px #CCC;
         background: #FFF;
@@ -560,8 +541,4 @@ hr.censo{
         max-height: 800%;
         max-width: 100%;
     }
-
-    
-
 }
-
