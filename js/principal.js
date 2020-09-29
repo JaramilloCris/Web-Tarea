@@ -102,34 +102,10 @@ function buscar_ciudad(){
     }
 }
 
-
 function hrefTable(tipo){
 
     document.location = tipo;
 }
-
-
-var contador = 0;
-function clonar(id) {
-
-    const divMascotas = document.getElementById('div-mascota');
-    var clon = divMascotas.cloneNode(true);
-    var botonAdd = document.getElementById("addFile" + contador.toString() );
-    var containerFile = document.getElementById("container-file" + contador.toString() );
-    contador = contador + 1;
-    botonAdd.id = "addFile" + contador.toString();
-    var contenedor = "container-file" + contador.toString();
-    botonAdd.setAttribute("onClick", "addInputFile(4,'"+contenedor+"')");
-    containerFile.id = "container-file" + contador.toString();
-
-    //document.getElementById("id-annos").id = "pico";
-    var principal = document.getElementById("form1");
-    var botones = document.getElementById("botones-form");
-    principal.appendChild(clon);
-    principal.appendChild(botones);
-
-}
-
 
 function showImage(idImage){
 
@@ -143,3 +119,75 @@ function hideImage(idImage){
     var popup = document.getElementById(idImage);
     popup.style.visibility = "hidden";
 }
+
+var contador = 1;
+function clonar(id) {
+
+    let newDiv = document.createElement('div');
+    newDiv.className = "container-content"
+    newDiv.innerHTML = `
+        <h2 style="font-weight: bold">Información de mascota: </h2>
+            <div class="input-div">
+                <br>
+                <select id="raza${contador}" class="select-custom" name="tipo-mascota" onchange="hideInput('raza','text-value')" required>
+                    <option value="">Seleccione un tipo</option>
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                    <option value="pez">Pez</option>
+                    <option value="tortuga">Tortuga</option>
+                    <option value="hamster">Hámster</option>
+                    <option value="loro">Loro</option>
+                    <option value="iguana">Iguana</option>
+                    <option value="araña">Araña</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <input hidden id="text-value${contador}" name="otro-mascota" class="input-style" size="40" maxlength="40" placeholder="Otro...">
+            </div>
+            <div class="input-div">
+                <input name="edad-mascota" class="input-style" id="id-annos${contador}" placeholder="Edad en años..." min="0">
+            </div>
+            <div class="input-div">
+                <input name="color-mascota" placeholder="Color..." class="input-style" id="id-color${contador}" size="30"  maxlength="30" required>
+            </div>
+            <div class="input-div">
+                <input name="raza-mascota" placeholder="Raza..." class="input-style" id="id-raza${contador}" size="30" maxlength="30" required>
+            </div>
+            <div class="input-div">
+                <label for="id-esterilizado${contador}">Esterilizado:</label>
+                <br>
+                <select id="id-esterilizado${contador}" class="input-style" name="esterilizado-mascota" required>
+                    <option value="">Seleccione opción</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                    <option value="no-aplica">No aplica</option>
+                </select>
+            </div>
+            <div>
+                <label for="id-vacunado${contador}">Vacunas al día:</label>
+                <br>
+                <select id="id-vacunado${contador}" name="vacunas-mascota" class="input-style" required>
+                    <option value="">Seleccione opción</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                    <option value="no-aplica">No aplica</option>
+                </select>
+            </div>
+            <div>
+                <label for="id-foto${contador}">Foto:</label>
+
+                <br>
+                <input name="foto-mascota" id="id-foto${contador}" size="15" type="file" required>
+                <button class="button-sub" type="button" id="addFile${contador}" onclick="addInputFile(4, 'container-file${contador}')">Añadir archivos</button>
+            </div>
+            <div id="container-file${contador}">
+            </div>
+            <br>
+        </div>`
+
+    document.getElementById('form1').appendChild(newDiv);
+    contador+=1;
+
+
+
+}
+

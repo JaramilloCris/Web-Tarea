@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/principal.css"/>
     <link rel="icon" type="image/jpeg" href="img/simon.jpeg">
     <script src="js/principal.js"></script>
+    <script src="js/validador.js"></script>
 
 </head>
 <body class="main">
@@ -30,12 +31,12 @@
                 </nav>
             </div>
             <div id="principal-div">
-                <form id="form1">
+                <form id="form1" onsubmit="return validarFormulario()">
                     <div class="container-content">
                         <h2 style="font-weight: bold">Domicilio:</h2>
                         <br>
                         <div class="input-div">
-                            <select class="select-custom" id="region" name="region" onchange="buscar_ciudad()" required>
+                            <select class="select-custom" id="region" name="region" onchange="buscar_ciudad()" required="required">
                                 <option value="" selected="selected">Regiones</option>
                                 <option value="1">Metropolitana de Santiago</option>
                                 <option value="2">Arica y Parinacota</option>
@@ -59,14 +60,14 @@
                             </select>
                         </div>
                         <div class="input-div">
-                            <input class="input-style" name="calle" id="id-calle" size="100" maxlength="250" placeholder="Nombre Calle...">
+                            <input class="input-style" name="calle" id="id-calle" size="100" maxlength="250" placeholder="Nombre Calle..." required="required">
                         </div>
 
                         <div class="input-div">
-                            <input class="input-style" name="numero" id="id-numero" size="20" required maxlength="20" placeholder="Número de domicilio...">
+                            <input class="input-style" name="numero" id="id-numero" size="20" required="required" maxlength="20" placeholder="Número de domicilio...">
                         </div>
                         <div class="input-div">
-                            <input class="input-style" name="sector" id="id-sector" size="100" required maxlength="100" placeholder="Sector...">
+                            <input class="input-style" name="sector" id="id-sector" size="100"  maxlength="100" placeholder="Sector...">
 
                         </div>
                     </div>
@@ -74,10 +75,10 @@
                         <h2 style="font-weight: bold">Datos de contacto: </h2>
                         <br>
                         <div class="input-div">
-                            <input class="input-style" placeholder="Nombre..." name="nombre" id="id-nombre" size="100" maxlength="200" required>
+                            <input class="input-style" placeholder="Nombre..." name="nombre" id="id-nombre" size="100" maxlength="200" required="required">
                         </div>
                         <div class="input-div">
-                            <input class="input-style" placeholder="Email..." name="email" id="id-email" size="100" type="email">
+                            <input class="input-style" placeholder="Email..." name="email" id="id-email" size="100" type="email" required="required">
                         </div>
                         <div class="input-div">
                             <input class="input-style" placeholder="Número de Celular..." name="celular" id="id-celular" size="15" type="tel">
@@ -87,7 +88,7 @@
                         <h2 style="font-weight: bold">Información de mascota: </h2>
                         <div class="input-div">
                             <br>
-                            <select id="raza" class="select-custom" name="tipo-mascota" onchange="hideInput('raza','text-value')" required>
+                            <select id="raza0" class="select-custom" name="tipo-mascota" onchange="hideInput('raza','text-value')" required="required">
                                 <option value="">Seleccione un tipo</option>
                                 <option value="perro">Perro</option>
                                 <option value="gato">Gato</option>
@@ -99,21 +100,21 @@
                                 <option value="araña">Araña</option>
                                 <option value="otro">Otro</option>
                             </select>
-                            <input hidden id="text-value" class="input-style" size="40" maxlength="40" placeholder="Otro...">
+                            <input hidden id="text-value0" name="otro-mascota" class="input-style" size="40" maxlength="40" placeholder="Otro...">
                         </div>
                         <div class="input-div">
-                            <input name="edad-mascota" class="input-style" id="id-annos" placeholder="Edad en años..." type="number" min="0">
+                            <input name="edad-mascota" class="input-style" id="id-annos0" placeholder="Edad en años..." min="0" required="required">
                         </div>
                         <div class="input-div">
-                            <input name="color-mascota" placeholder="Color..." class="input-style" id="id-color" size="30"  maxlength="30" required>
+                            <input name="color-mascota" placeholder="Color..." class="input-style" id="id-color0" size="30"  maxlength="30" required="required">
                         </div>
                         <div class="input-div">
-                            <input name="raza-mascota" placeholder="Raza..." class="input-style" id="id-raza" size="30" maxlength="30" required>
+                            <input name="raza-mascota" placeholder="Raza..." class="input-style" id="id-raza0" size="30" maxlength="30" required="required">
                         </div>
                         <div class="input-div">
-                            <label for="id-esterilizado">Esterilizado:</label>
+                            <label for="id-esterilizado0">Esterilizado:</label>
                             <br>
-                            <select id="id-esterilizado" class="input-style" name="esterilizado-mascota" required>
+                            <select id="id-esterilizado0" class="input-style" name="esterilizado-mascota" required="required">
                                 <option value="">Seleccione opción</option>
                                 <option value="si">Sí</option>
                                 <option value="no">No</option>
@@ -121,9 +122,9 @@
                             </select>
                         </div>
                         <div>
-                            <label for="id-vacunado">Vacunas al día:</label>
+                            <label for="id-vacunado0">Vacunas al día:</label>
                             <br>
-                            <select id="id-vacunado" name="vacunas-mascota" class="input-style" required>
+                            <select id="id-vacunado0" name="vacunas-mascota" class="input-style" required="required">
                                 <option value="">Seleccione opción</option>
                                 <option value="si">Sí</option>
                                 <option value="no">No</option>
@@ -131,10 +132,10 @@
                             </select>
                         </div>
                         <div>
-                            <label for="id-foto">Foto:</label>
+                            <label for="id-foto0">Foto:</label>
 
                             <br>
-                            <input name="foto-mascota" id="id-foto" size="15" type="file" required>
+                            <input name="foto-mascota" id="id-foto0" size="15" type="file" required>
                             <button class="button-sub" type="button" id="addFile0" onclick="addInputFile(4, 'container-file0')">Añadir archivos</button>
                         </div>
                         <div id="container-file0">
@@ -150,23 +151,27 @@
                     <div class="popupBody-ver">
                         <h4 class="tittle">¿Está seguro que desea enviar esta información?</h4>
                         <a class="cerrar" href="#">&times;</a>
-                        <div class="popupContent">
-                            <div class="ver-botones">
-                                <button class="ver-button" type="submit" form="form1" onclick="hrefTable('#popup-validado')">Sí, estoy total y absolutamente seguro</button>
-                                <button class="ver-button" onclick="hrefTable('#')">No estoy seguro, quiero volver al formulario</button>
-                            </div>
+                        <div class="ver-botones">
+                            <button class="ver-button" type="submit" form="form1" onclick="validarFormulario()">Sí, estoy total y absolutamente seguro</button>
+                            <button class="ver-button" onclick="hrefTable('#')">No estoy seguro, quiero volver al formulario</button>
                         </div>
                     </div>
                 </div>
                 <div id="popup-validado" class="overlay-ver">
                     <div class="popupBody-ver">
                         <h4 class="tittle">Hemos recibido su información, muchas gracias por colaborar</h4>
-                        <a class="cerrar" href="#">&times;</a>
                         <div class="popupContent">
                             <div class="form-botones">
                                 <button class="ver-button" onclick="hrefTable('principal.html')">Volver al inicio</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div id="popup-error" class="overlay-ver">
+                    <div class="popup-error">
+                        <h4 class="tittle" id="mensaje-error">Error</h4>
+                        <h4 class="tittle" id="mensaje-error1"></h4>
+                        <a class="cerrar" href="#">&times;</a>
                     </div>
                 </div>
             </div>
