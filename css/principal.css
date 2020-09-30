@@ -262,7 +262,10 @@ p {
 
 .container-me{
 
-    padding: 55px;
+
+    width: 100%;
+    position: relative;
+    height: 100%;
 }
 
 .principal-imagen{
@@ -296,7 +299,7 @@ p {
 .select-custom{
 
     border-radius: 5px;
-    width: 270px;
+    width: 100%;
 }
 
 .button-sub{
@@ -503,7 +506,23 @@ hr.censo{
     padding: 50px;
 }
 
+.info-div{
+
+    margin-bottom: 7%;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
 @media (max-width:960px){
+
+    .container-me{
+
+
+        width: 100%;
+        position: relative;
+        margin-top: 15%;
+
+}
 
     .titulo{
 
@@ -513,6 +532,7 @@ hr.censo{
     .nav-ref{
 
         height: 100%;
+        width: 300px;
         display: block;
         border-radius: 6px;
         background-color: white;
@@ -521,6 +541,7 @@ hr.censo{
         font-weight: bold;
         padding: 3px 40px;
         justify-content: space-between;
+        margin-left: 0px;
 }
     .nav-item {
 
@@ -609,7 +630,11 @@ hr.censo{
         border-radius: 5px;
         border-color: #d6d6d6;
 
-}
+    }
+    h2{
+
+        font-size: 25px;
+    }
 
     .popup-error{
 
