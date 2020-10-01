@@ -129,7 +129,7 @@ function clonar(id) {
         <h2 style="font-weight: bold">Información de mascota: </h2>
             <div class="input-div">
                 <br>
-                <select id="raza${contador}" class="select-custom" name="tipo-mascota" onchange="hideInput('raza','text-value')" required>
+                <select id="raza${contador}" class="select-custom" name="tipo-mascota" onchange="hideInput('raza${contador}','text-value${contador}')" required>
                     <option value="">Seleccione un tipo</option>
                     <option value="perro">Perro</option>
                     <option value="gato">Gato</option>
