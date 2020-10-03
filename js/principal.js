@@ -70,13 +70,15 @@ function hideInput(selectId,inputId){
 }
 
 
-function addInputFile(num, container){
+function addInputFile(num, container, numMascota){
 
 
         var divForm = document.getElementById(container);
         if(divForm.childElementCount < 7){
             var inputFile = document.createElement("input");
             inputFile.type = "file";
+            inputFile.name = "foto-mascota" + numMascota
+            inputFile.id = 'id-foto' + numMascota.toString() + '-' + (divForm.childElementCount/2).toString();
             divForm.appendChild(inputFile);
             divForm.appendChild(document.createElement("br"));
     }
@@ -176,8 +178,8 @@ function clonar(id) {
                 <label for="id-foto${contador}">Foto:</label>
 
                 <br>
-                <input name="foto-mascota" id="id-foto${contador}" size="15" type="file" required>
-                <button class="button-sub" type="button" id="addFile${contador}" onclick="addInputFile(4, 'container-file${contador}')">Añadir archivos</button>
+                <input name="foto-mascota${contador}" id="id-foto${contador}" size="15" type="file" required>
+                <button class="button-sub" type="button" id="addFile${contador}" onclick="addInputFile(4, 'container-file${contador}',${contador})">Añadir archivos</button>
             </div>
             <div id="container-file${contador}">
             </div>

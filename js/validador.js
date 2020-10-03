@@ -133,7 +133,26 @@ function validarFormulario(){
             return false;
         }
     }
-    let foto = document.getElementsByName('foto-mascota');
+    let cantidadMascotas = vacunas.length;
+    for(let i = 0; i < cantidadMascotas; i++){
+
+        let name = 'foto-mascota' + i.toString();
+        let fotos = document.getElementsByName(name);
+        let cantidadFotos = 0;
+        for(let j = 0; j < fotos.length; j++){
+
+            if(fotos[j].files.length === 1) {
+                cantidadFotos += 1;
+            }
+        }
+        if(cantidadFotos === 0){
+
+            mostrarError("Ingrese al menos una foto por mascota");
+            return false;
+        }
+
+
+    }
 
     hrefTable('#popup-validado');
     return true;

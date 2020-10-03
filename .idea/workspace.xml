@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e1b32da0-67a6-4c74-a070-065402185f73" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/principal.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/principal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formulario.html" beforeDir="false" afterPath="$PROJECT_DIR$/formulario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/principal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/validador.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/validador.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/principal.html" beforeDir="false" afterPath="$PROJECT_DIR$/principal.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="32b2aede-ba08-49b7-b8ac-2ff17639b91d" />
+  <component name="JupyterTrust" id="0be105c7-484f-4d65-bd38-4ac813af3ba4" />
   <component name="ProjectId" id="1hWunaRvUb4ktB0rT5m6laCa56n" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -87,6 +90,7 @@
       <workItem from="1601589910842" duration="921000" />
       <workItem from="1601657947959" duration="6000" />
       <workItem from="1601657979551" duration="2242000" />
+      <workItem from="1601754634332" duration="3035000" />
     </task>
     <servers />
   </component>
