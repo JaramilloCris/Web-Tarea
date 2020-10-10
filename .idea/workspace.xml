@@ -21,10 +21,60 @@
   <component name="ChangeListManager">
     <list default="true" id="e1b32da0-67a6-4c74-a070-065402185f73" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/formulario.html" beforeDir="false" afterPath="$PROJECT_DIR$/formulario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/principal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/principal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/validador.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/validador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/principal.html" beforeDir="false" afterPath="$PROJECT_DIR$/principal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/dinPro.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/principal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/ranchers.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/estadisticas.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/formulario.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/agus-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/gato1-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/graficos/grafico1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/graficos/grafico2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/graficos/grafico3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/agus.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/gato1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/gato2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/gato3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/img.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro6.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro7.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro8.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/perro9.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/rana1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img320/simon.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/agus-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/foton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/gato1-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/gato2-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/gato3-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/img.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro2-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro5-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro6-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro7-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro8-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro800.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/perro9-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/rana1-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img800/simon-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/perro1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/perro2-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/simon-800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/principal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/validador.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/principal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabla.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +140,7 @@
       <workItem from="1601589910842" duration="921000" />
       <workItem from="1601657947959" duration="6000" />
       <workItem from="1601657979551" duration="2242000" />
-      <workItem from="1601754634332" duration="3035000" />
+      <workItem from="1601754634332" duration="3924000" />
     </task>
     <servers />
   </component>

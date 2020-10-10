@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Animalitos</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/principal.css"/>
+    <link rel="icon" type="image/jpeg" href="img/simon.jpeg">
+    <script src="js/principal.js"></script>
+    <script src="js/validador.js"></script>
+
+</head>
+<body class="main">
+
+    <div class="principal-container mx-auto">
+
+        <header class="principal-header text-center">
+            <h1 class="titulo">Formulario de mascotas</h1>
+            <p class="subtitulo">La mejor pagina para buscar mascotas</p>
+        </header>
+        <section id="principal-section" class="t-section">
+            <div class="nav-div">
+                <nav class="nav-bar">
+                    <a href="principal.html" class="nav-ref"><span class="nav-item"></span>Principal</a>
+                    <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
+                    <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="estadisticas.html" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
+                </nav>
+            </div>
+            <div id="principal-div">
+                <form id="form1" method="POST" action="response.py" onsubmit="return validarFormulario()">
+                    <div class="container-content">
+                        <h2 style="font-weight: bold">Domicilio:</h2>
+                        <br>
+                        <div class="input-div">
+                            <select class="select-custom" id="region" name="region" onchange="buscar_ciudad()" required="required">
+                                <option value="" selected="selected">Regiones</option>
+                                <option value="1">Metropolitana de Santiago</option>
+                                <option value="2">Arica y Parinacota</option>
+                                <option value="3">Tarapacá</option>
+                                <option value="4">Antofagasta</option>
+                                <option value="5">Atacama</option>
+                                <option value="6">Coquimbo</option>
+                                <option value="7">Valparaiso</option>
+                                <option value="8">Libertador Gral. Bernardo O Higgins</option>
+                                <option value="9">Maule</option>
+                                <option value="10">Ñuble</option>
+                                <option value="11">Biobío</option>
+                                <option value="12">La Araucanía</option>
+                                <option value="13">Los Ríos</option>
+                                <option value="14">Los Lagos</option>
+                                <option value="15">Aisén del Gral. Carlos Ibáñez del Campo</option>
+                                <option value="15">Magallanes y de la Antártica Chilena</option>
+                            </select>
+                            <select class="select-custom" name="comuna" id="comuna">
+                                <option value="0">Comunas por Region</option>
+                            </select>
+                        </div>
+                        <div class="input-div">
+                            <input class="input-style" name="calle" id="id-calle" size="100" maxlength="250" placeholder="Nombre Calle..." required="required">
+                        </div>
+
+                        <div class="input-div">
+                            <input class="input-style" name="numero" id="id-numero" size="20" required="required" maxlength="20" placeholder="Número de domicilio...">
+                        </div>
+                        <div class="input-div">
+                            <input class="input-style" name="sector" id="id-sector" size="100"  maxlength="100" placeholder="Sector...">
+
+                        </div>
+                    </div>
+                    <div class="container-content">
+                        <h2 style="font-weight: bold">Datos de contacto: </h2>
+                        <br>
+                        <div class="input-div">
+                            <input class="input-style" placeholder="Nombre..." name="nombre" id="id-nombre" size="100" maxlength="200" required="required">
+                        </div>
+                        <div class="input-div">
+                            <input class="input-style" placeholder="Email..." name="email" id="id-email" size="100" type="email" required="required">
+                        </div>
+                        <div class="input-div">
+                            <input class="input-style" placeholder="Número de Celular..." name="celular" id="id-celular" size="15" type="tel">
+                            <small class="form-text text-muted">Ejemplo: +56912345678</small>
+                        </div>
+                    </div>
+                    <div id="div-mascota" class="container-content">
+                        <h2 style="font-weight: bold">Información de mascota: </h2>
+                        <div class="input-div">
+                            <br>
+                            <select id="raza0" class="select-custom" name="tipo-mascota" onchange="hideInput('raza0','text-value0')" required="required">
+                                <option value="">Seleccione un tipo</option>
+                                <option value="1">Perro</option>
+                                <option value="2">Gato</option>
+                                <option value="3">Pez</option>
+                                <option value="4">Tortuga</option>
+                                <option value="5">Hámster</option>
+                                <option value="6">Loro</option>
+                                <option value="7">Iguana</option>
+                                <option value="8">Araña</option>
+                                <option value="9">Otro</option>
+                            </select>
+                            <input hidden id="text-value0" name="otro-mascota" class="input-style" size="40" maxlength="40" placeholder="Otro...">
+                        </div>
+                        <div class="input-div">
+                            <input name="edad-mascota" class="input-style" id="id-annos0" placeholder="Edad en años..." required="required">
+                        </div>
+                        <div class="input-div">
+                            <input name="color-mascota" placeholder="Color..." class="input-style" id="id-color0" size="30"  maxlength="30" required="required">
+                        </div>
+                        <div class="input-div">
+                            <input name="raza-mascota" placeholder="Raza..." class="input-style" id="id-raza0" size="30" maxlength="30" required="required">
+                        </div>
+                        <div class="input-div">
+                            <label for="id-esterilizado0">Esterilizado:</label>
+                            <br>
+                            <select id="id-esterilizado0" class="input-style" name="esterilizado-mascota" required="required">
+                                <option value="">Seleccione opción</option>
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                                <option value="2">No aplica</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="id-vacunado0">Vacunas al día:</label>
+                            <br>
+                            <select id="id-vacunado0" name="vacunas-mascota" class="input-style" required="required">
+                                <option value="">Seleccione opción</option>
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                                <option value="2">No aplica</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="id-foto0-0">Foto:</label>
+
+                            <br>
+                            <input name="foto-mascota0" id="id-foto0-0" size="15" type="file" required>
+
+                            <button class="button-sub" type="button" id="addFile0" onclick="addInputFile(4, 'container-file0', 0)">Añadir archivos</button>
+                        </div>
+                        <div id="container-file0">
+                        </div>
+                        <br>
+                    </div>
+                </form>
+                <div id="botones-form" class="form-botones">
+                    <button class="button-sub-out" id="clone-mascota" type="button" onclick="clonar('div-mascota')" >Informar otra mascota en este domicilio</button>
+                    <button class="button-sub-out" id="subm" onclick="hrefTable('#popup-verificacion')" >Enviar</button>
+                </div>
+                <div id="popup-verificacion" class="overlay-ver">
+                    <div class="popupBody-ver">
+                        <h4 class="tittle">¿Está seguro que desea enviar esta información?</h4>
+                        <a class="cerrar" href="#">&times;</a>
+                        <div class="ver-botones">
+                            <button class="ver-button" type="submit" form="form1" onclick="validarFormulario()">Sí, estoy total y absolutamente seguro</button>
+                            <button class="ver-button" onclick="hrefTable('#')">No estoy seguro, quiero volver al formulario</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="popup-validado" class="overlay-ver">
+                    <div class="popupBody-ver">
+                        <h4 class="tittle">Hemos recibido su información, muchas gracias por colaborar</h4>
+                        <div class="popupContent">
+                            <div class="form-botones">
+                                <button class="ver-button" onclick="hrefTable('principal.html')">Volver al inicio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="popup-error" class="overlay-ver">
+                    <div class="popup-error">
+                        <h4 class="tittle" id="mensaje-error">Error</h4>
+                        <h4 class="tittle" id="mensaje-error1"></h4>
+                        <a class="cerrar" href="#">&times;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
