@@ -1,5 +1,11 @@
-#!C:\Users\Tobal\AppData\Local\Programs\Python\Python37\python.exe
-# -*- coding: utf-8 -*-
+#!C:\Users\groso\AppData\Local\Programs\Python\Python37-32\python.exe
+import sys
+from io import TextIOWrapper
+sys.stdout = TextIOWrapper(sys.stdout.buffer.detach(), encoding='utf8')
+
+print("Content-type: text/html; charset=UTF-8")
+print("")   
+
 
 
 import save_db
@@ -58,12 +64,16 @@ html = f'''
                     <h2>Últimas mascotas informadas</h2>
                     '''
 print(html)
+number_domicilio = -1
 for p in last_domicilio:
+    source_foto = db.image_from_domicilio(last_domicilio[number_domicilio][0])[0][0]
+    number_domicilio-=1
+
 
     val = f'''<hr class="new">
         <div>
 
-            <img class="imagen-mascota" src="img/agus-800.jpeg" alt="Mascota">
+            <img class="imagen-mascota" src="{source_foto}" alt="Mascota">
             <a class="font-mascotas">Comuna: </a><a class="font-informado"> {str(db.comuna_by_id(p[2]))}</a><br>
             <a class="font-mascotas">Calle: </a><a class="font-informado"> {str(p[3])}</a><br>
         '''

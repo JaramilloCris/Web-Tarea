@@ -48,6 +48,16 @@ class AnimalitosDb:
         self.cursor.execute(sql, data)
         self.db.commit()
 
+    def save_new_mascota(self, name):
+
+        sql = '''
+        INSERT INTO tipo_mascota(nombre) 
+        VALUES(%s)
+        '''
+        print(sql)
+        self.cursor.execute(sql, (name,))
+        self.db.commit()
+
     def get_all(self, table):
 
         self.cursor.execute(f'SELECT * FROM {table}')
@@ -125,5 +135,21 @@ class AnimalitosDb:
         SELECT nombre FROM tipo_mascota WHERE id = {id_mascota}
         '''
 
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def id_mascota_by_name(self, name):
+
+        sql = f'''
+        SELECT id FROM tipo_mascota WHERE nombre = '{name}'
+        '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def image_from_domicilio(self, id_domicilio):
+
+        sql = f'''
+        SELECT ruta_archivo FROM mascota_domicilio INNER JOIN foto_mascota ON mascota_domicilio.id = foto_mascota.mascota_domicilio_id WHERE domicilio_id = {id_domicilio} LIMIT 1
+        '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
