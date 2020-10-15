@@ -1,7 +1,7 @@
-#!C:\Users\groso\AppData\Local\Programs\Python\Python37-32\python.exe
-import sys
-from io import TextIOWrapper
-sys.stdout = TextIOWrapper(sys.stdout.buffer.detach(), encoding='utf8')
+#!C:\Users\groso\AppData\Local\Programs\Python\Python37\python.exe
+# -*- coding: utf-8 -*-
+
+
 
 print("Content-type: text/html; charset=UTF-8")
 print("")   
@@ -22,10 +22,10 @@ html = f'''
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Animalitos</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/principal.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/principal.css" />
     <link rel="icon" type="image/jpeg" href="img/foton.png">
-    <link rel="script" href="js/principal.js">
+    <link rel="script" href="/js/principal.js">
 
 </head>
 
@@ -41,14 +41,14 @@ html = f'''
             <div class="nav-div">
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
-                    <a href="formulario.html" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
+                    <a href="formulario.py" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
                     <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
                     <a href="estadisticas.html" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
             <div class="container-content">
                 <figure>
-                    <img src="img/img.jpeg" alt="Image" class="img-fluid principal-imagen center-image">
+                    <img src="/img/img.jpeg" alt="Image" class="img-fluid principal-imagen center-image">
                 </figure>
 
                 <div class="info-div">
@@ -73,7 +73,7 @@ for p in last_domicilio:
     val = f'''<hr class="new">
         <div>
 
-            <img class="imagen-mascota" src="{source_foto}" alt="Mascota">
+            <img class="imagen-mascota" src="/{source_foto}" alt="Mascota">
             <a class="font-mascotas">Comuna: </a><a class="font-informado"> {str(db.comuna_by_id(p[2]))}</a><br>
             <a class="font-mascotas">Calle: </a><a class="font-informado"> {str(p[3])}</a><br>
         '''

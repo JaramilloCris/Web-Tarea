@@ -1,4 +1,4 @@
-#!C:\Users\groso\AppData\Local\Programs\Python\Python37-32\python.exe
+#!C:\Users\groso\AppData\Local\Programs\Python\Python37\python.exe
 
 print("Content-type: text/html; charset=UTF-8")
 print("")   
@@ -8,6 +8,7 @@ import cgitb; cgitb.enable()
 import save_db as sd
 import datetime
 import filetype
+import copy
 
 # Saco el formulario y acceso a la base de datos
 form = cgi.FieldStorage()
@@ -55,6 +56,8 @@ if len(form) > 0:
 
         # El arreglo de fotos de mascotas
         item = form[string_mascota]
+        item_check = copy.copy(item)
+
 
         # Si son mas de una, es una lista, si no un valor
         if type(item) == list:
@@ -67,8 +70,11 @@ if len(form) > 0:
 
             if type(item) != list:
                 fileitem = item
+                fileitem_check = item_check
+            
             else:
                 fileitem = item[i]
+                fileitem_check = item_check[i]
 
             # El item no es vacio
             if fileitem.filename:
@@ -77,31 +83,32 @@ if len(form) > 0:
 
                     # Tomo el tamaño y tipo del archivo
                     size = os.fstat(fileitem.file.fileno()).st_size
-                    tipo_real = filetype.guess(fileitem.file)
+                    # Si el file es menor al tamaño maximo
+                    if size <= MAX_FILE_SIZE:
 
-                    # Si el tipo es una imagen
-                    if tipo_real != None and "image" in tipo_real.mime:
+                        fn = os.path.basename(fileitem.filename)
+                        f = open("./tmp/" + fn, 'wb')
+                        file_d = fileitem.file.read()
+                        f.write(file_d)
+                        f.close()
+                        mensaje = "El archivo fue recibido correctamente"
+                        data_foto = (
 
-                        # Si el file es menor al tamaño maximo
-                        if size <= MAX_FILE_SIZE:
+                        "./tmp/" + fn, fn
+                        )
+                        fotos_array.append(data_foto)
+                        tipo_real = filetype.guess("./tmp/" + fn)
+                        if tipo_real == None or "image" not in tipo_real.mime:
 
-                            fn = os.path.basename(fileitem.filename)
-                            with open('./tmp/'+fn, 'wb') as f:
-                                f.write(fileitem.file.read())
-                            mensaje = "El archivo fue recibido correctamente"
-                            data_foto = (
-
-                            './tmp/'+fn, fn
-                            )
-                            fotos_array.append(data_foto)
-                            actual_mascota+=1
-                        else:
-
-                            mensaje = "El archivo pesa mucho"
+                            mensaje = "Archivo no soportado"
                             break
+
+                        actual_mascota+=1
                     else:
-                        mensaje = "Archivo no soportado"
+
+                        mensaje = "El archivo pesa mucho"
                         break
+             
                 except IOError as e:
                     mensaje = "Error"
                     break
@@ -188,11 +195,11 @@ html=f'''
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Animalitos</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/principal.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/principal.css"/>
     <link rel="icon" type="image/jpeg" href="img/simon.jpeg">
-    <script src="js/principal.js"></script>
-    <script src="js/validador.js"></script>
+    <script src="/js/principal.js"></script>
+    <script src="/js/validador.js"></script>
 
 </head>
 <body class="main">
