@@ -8,7 +8,6 @@ import cgitb; cgitb.enable()
 import save_db as sd
 import datetime
 import filetype
-import copy
 
 # Saco el formulario y acceso a la base de datos
 form = cgi.FieldStorage()

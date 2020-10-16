@@ -154,7 +154,6 @@ function validarFormulario(){
 
     }
 
-    hrefTable('#popup-validado');
     return true;
 
 

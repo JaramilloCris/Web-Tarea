@@ -2,10 +2,195 @@
 
 
 print("Content-type: text/html; charset=UTF-8")
-print("")   
+print("")  
+
+import cgi, os
+import cgitb; cgitb.enable()
+import save_db as sd
+import datetime
+import filetype
+
+# Saco el formulario y acceso a la base de datos
+form = cgi.FieldStorage()
+db = sd.AnimalitosDb("root", "")
+
+# Estado de formulario
+state_formulario = 'visible'
+state_result = 'hidden'
+
+# Tamaño maximo del archivo
+MAX_FILE_SIZE = 1000000
+
+# Mensaje de proceso
+mensaje = "El archivo fue recibido correctamente"
+popup = '#'
+
+# Tamaño del archivo ingresado
+size = 0
+tipo_real = ""
+
+# Mascota revisando actual
+actual_mascota = 0
+
+# Si el formulario tiene informacion
+if len(form) > 0:
+
+    popup = '#popup-validado'
+    state_formulario = 'hidden'
+    state_result = 'visible'
+
+    # Id de la comuna
+    id_comuna = db.get_comuna_id(form["comuna"].value)
+
+    # Data sobre el domicilio
+    data_domicilio = (
+
+        datetime.datetime.now(), id_comuna, \
+            form["calle"].value, form["numero"].value, \
+                form["sector"].value, form["nombre"].value, form["email"].value, \
+                    form["celular"].value
+    )
+
+    fotos_array = []
+
+    # Por cada mascota, revisaremos sus fotos
+    while mensaje == "El archivo fue recibido correctamente":
+
+        # String que indica en que mascota estoy
+        string_mascota = 'foto-mascota' + str(actual_mascota)
+
+        # Si no esta en el formulario, dejo de revisar fotos
+        if string_mascota not in form:
+            break
+
+        # El arreglo de fotos de mascotas
+        item = form[string_mascota]
+
+        # Si son mas de una, es una lista, si no un valor
+        if type(item) == list:
+            quantity_item = len(item)
+        else:
+            quantity_item = 1
+
+        # Por cada foto de las mascotas
+        for i in range(quantity_item):
+
+            if type(item) != list:
+                fileitem = item
+            
+            else:
+                fileitem = item[i]
+
+            # El item no es vacio
+            if fileitem.filename:
+
+                try:
+
+                    # Tomo el tamaño y tipo del archivo
+                    size = os.fstat(fileitem.file.fileno()).st_size
+                    # Si el file es menor al tamaño maximo
+                    if size <= MAX_FILE_SIZE:
+
+                        fn = os.path.basename(fileitem.filename)
+                        f = open("./tmp/" + fn, 'wb')
+                        file_d = fileitem.file.read()
+                        f.write(file_d)
+                        f.close()
+                        mensaje = "Hemos recibido su información, muchas gracias por colaborar"
+                        data_foto = (
+
+                        "./tmp/" + fn, fn
+                        )
+                        fotos_array.append(data_foto)
+                        tipo_real = filetype.guess("./tmp/" + fn)
+                        if tipo_real == None or "image" not in tipo_real.mime:
+
+                            mensaje = "Archivo no soportado"
+                            break
+
+                        actual_mascota+=1
+                    else:
+
+                        mensaje = "El archivo pesa mucho"
+                        break
+             
+                except IOError as e:
+                    mensaje = "Error"
+                    break
+            else:
+
+                mensaje = "No se recibio el archivo"
+                break
+        
+
+    # Los archivos fueron procesados exitosamente
+    if mensaje == "Hemos recibido su información, muchas gracias por colaborar":
 
 
-html = '''
+        # Se guarda el domicilio en la db
+        db.save_domicilio(data_domicilio)
+
+        for i in range(actual_mascota):
+        
+            # Arreglo, si son mas de una es una lista, si no un valor
+            if type(form["tipo-mascota"]) == list:
+                
+
+                data_mascota = (
+
+                    int(form["tipo-mascota"][i].value), \
+                        int(form["edad-mascota"][i].value), form["color-mascota"][i].value, \
+                            form["raza-mascota"][i].value, int(form["esterilizado-mascota"][i].value), \
+                                int(form["vacunas-mascota"][i].value), db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value)
+                )
+                db.save_mascota_domicilio(data_mascota)
+
+                id_mascota = db.get_mascota_id(form["tipo-mascota"][i].value, form["edad-mascota"][i].value, \
+                    form["color-mascota"][i].value, db.get_domicilio_id(form["calle"].value, \
+                        form["sector"].value, form["nombre"].value), form["raza-mascota"][i].value)
+
+            else:
+
+                # El usuario ingresara una nueva mascota
+                if form["tipo-mascota"].value == "9":
+                    
+                    # Si no se encuentra en la base de datos, la incluyo
+                    if db.id_mascota_by_name(form["otro-mascota"].value) == []:
+                        db.save_new_mascota(form["otro-mascota"].value)
+                    
+                    # El tipo de mascota sera el del input otro-mascota
+                    tipo_mascota = db.id_mascota_by_name(form["otro-mascota"].value)[0][0]
+
+                # Es una mascota que esta en la base de datos
+                else:
+                    tipo_mascota = form["tipo-mascota"].value
+
+                # Datos para incluir a una mas
+                data_mascota = (
+
+                    int(tipo_mascota), \
+                        int(form["edad-mascota"].value), form["color-mascota"].value, form["raza-mascota"].value, \
+                            int(form["esterilizado-mascota"].value), int(form["vacunas-mascota"].value), \
+                                db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value)
+                )
+                db.save_mascota_domicilio(data_mascota)
+
+                # El id de la nueva mascota
+                id_mascota = db.get_mascota_id(tipo_mascota, form["edad-mascota"].value, form["color-mascota"].value, \
+                    db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value), form["raza-mascota"].value)
+
+            # Guardo las fotos en la base de datos
+            db.save_foto_mascota((fotos_array[i][0], fotos_array[i][1], id_mascota))
+        
+    # Las fotos tuvieron error al subirse, las borro de la carpeta tmp
+    else:
+
+        for i in range(len(fotos_array)):
+
+            os.remove(fotos_array[0][0])
+
+
+html = f'''
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,8 +223,17 @@ html = '''
                     <a href="estadisticas.html" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
+            <div class="container-content" style="visibility: {state_result}; position: absolute; width: 100%;">
+                <h4 class="tittle">{mensaje}</h4>
+                    <div class="popupContent">
+                        <div class="form-botones">
+                            <button class="ver-button" onclick="hrefTable('principal.py')">Volver al inicio</button>
+                        </div>
+                    </div>
+            </div>
+
             <div id="principal-div">
-                <form id="form1" enctype="multipart/form-data" method="POST" action="response.py" onsubmit="return validarFormulario()">
+                <form style="visibility: {state_formulario}" id="form1" enctype="multipart/form-data" method="POST" action="formulario.py" onsubmit="return validarFormulario()">
                     <div class="container-content">
                         <h2 style="font-weight: bold">Domicilio:</h2>
                         <br>
@@ -169,7 +363,7 @@ html = '''
                 </div>
                 <div id="popup-validado" class="overlay-ver">
                     <div class="popupBody-ver">
-                        <h4 class="tittle">Hemos recibido su información, muchas gracias por colaborar</h4>
+                        <h4 class="tittle">{mensaje}</h4>
                         <div class="popupContent">
                             <div class="form-botones">
                                 <button class="ver-button" onclick="hrefTable('principal.html')">Volver al inicio</button>
@@ -188,6 +382,11 @@ html = '''
         </section>
     </div>
 </body>
+    <script>
+
+        hrefTable({popup});
+    
+    </script>
 </html>
 '''
 print(html)
