@@ -42,8 +42,8 @@ html = f'''
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
                     <a href="formulario.py" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
-                    <a href="tabla.html" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
-                    <a href="estadisticas.html" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
+                    <a href="tabla.py" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="estadisticas.py" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
             <div class="container-content">
