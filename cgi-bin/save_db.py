@@ -1,4 +1,6 @@
 import mysql.connector
+import datetime
+
 
 
 class AnimalitosDb:
@@ -112,7 +114,16 @@ class AnimalitosDb:
         self.cursor.execute(sql)
         return self.cursor.fetchall()[0][0]
 
-    def mascora_from_domicilio(self, domicilio_id):
+    def region_by_comunaid(self, id_comuna):
+
+        sql =f'''
+        SELECT nombre FROM region INNER JOIN (SELECT id as id_comuna, nombre as nombre_comuna, region_id FROM comuna WHERE id = {id_comuna}) AS comuna_id ON region.id = comuna_id.region_id         
+        '''
+
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()[0][0]
+
+    def mascota_from_domicilio(self, domicilio_id):
 
         sql = f'''
         SELECT * FROM mascota_domicilio WHERE domicilio_id = '{domicilio_id}'
@@ -129,6 +140,15 @@ class AnimalitosDb:
         self.cursor.execute(sql)
         return self.cursor.fetchall()
 
+    def count_all_mascotas(self, id_domicilio):
+
+        sql = f'''
+        SELECT COUNT(*) FROM mascota_domicilio WHERE domicilio_id = {id_domicilio}
+        '''
+
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()[0][0] 
+
     def mascota_by_id(self, id_mascota):
 
         sql = f'''
@@ -136,7 +156,7 @@ class AnimalitosDb:
         '''
 
         self.cursor.execute(sql)
-        return self.cursor.fetchall()
+        return self.cursor.fetchall()[0][0]
 
     def id_mascota_by_name(self, name):
 
@@ -153,3 +173,20 @@ class AnimalitosDb:
         '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()
+
+    def count_fotos_mascota(self, id_mascota):
+
+        sql = f'''
+        SELECT COUNT(*) FROM foto_mascota WHERE mascota_domicilio_id = {id_mascota}
+        '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()[0][0]
+
+    def esterilizado(self, value):
+
+        if value == 0:
+            return "No"
+        elif value == 1:
+            return "Si"
+        else:
+            "No aplica"

@@ -1,5 +1,5 @@
 #!C:\Users\groso\AppData\Local\Programs\Python\Python37\python.exe
-
+# -*- coding: utf-8 -*-
 
 print("Content-type: text/html; charset=UTF-8")
 print("")  
@@ -22,7 +22,7 @@ state_result = 'hidden'
 MAX_FILE_SIZE = 1000000
 
 # Mensaje de proceso
-mensaje = "El archivo fue recibido correctamente"
+mensaje = "Hemos recibido su información, muchas gracias por colaborar"
 popup = '#'
 
 # Tamaño del archivo ingresado
@@ -54,7 +54,7 @@ if len(form) > 0:
     fotos_array = []
 
     # Por cada mascota, revisaremos sus fotos
-    while mensaje == "El archivo fue recibido correctamente":
+    while mensaje == "Hemos recibido su información, muchas gracias por colaborar":
 
         # String que indica en que mascota estoy
         string_mascota = 'foto-mascota' + str(actual_mascota)
@@ -72,6 +72,7 @@ if len(form) > 0:
         else:
             quantity_item = 1
 
+        fotos_actual_mascota = []
         # Por cada foto de las mascotas
         for i in range(quantity_item):
 
@@ -101,14 +102,13 @@ if len(form) > 0:
 
                         "./tmp/" + fn, fn
                         )
-                        fotos_array.append(data_foto)
+                        fotos_actual_mascota.append(data_foto)
                         tipo_real = filetype.guess("./tmp/" + fn)
                         if tipo_real == None or "image" not in tipo_real.mime:
 
                             mensaje = "Archivo no soportado"
                             break
 
-                        actual_mascota+=1
                     else:
 
                         mensaje = "El archivo pesa mucho"
@@ -121,6 +121,8 @@ if len(form) > 0:
 
                 mensaje = "No se recibio el archivo"
                 break
+        fotos_array.append(fotos_actual_mascota)
+        actual_mascota+=1
         
 
     # Los archivos fueron procesados exitosamente
@@ -180,7 +182,8 @@ if len(form) > 0:
                     db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value), form["raza-mascota"].value)
 
             # Guardo las fotos en la base de datos
-            db.save_foto_mascota((fotos_array[i][0], fotos_array[i][1], id_mascota))
+            for j in range(len(fotos_array[i])):
+                db.save_foto_mascota((fotos_array[i][j][0], fotos_array[i][j][1], id_mascota))
         
     # Las fotos tuvieron error al subirse, las borro de la carpeta tmp
     else:
@@ -194,9 +197,8 @@ html = f'''
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <title>Animalitos</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />

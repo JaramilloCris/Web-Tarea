@@ -84,7 +84,7 @@ for p in last_domicilio:
         mascota = db.mascota_by_id(l[0])
 
         val2 = f'''
-            <a class="font-mascotas">{mascota[0][0]}: </a> <a class="font-informado"> {l[1]}</a><br>
+            <a class="font-mascotas">{mascota}: </a> <a class="font-informado"> {l[1]}</a><br>
             '''
 
         print(val2)

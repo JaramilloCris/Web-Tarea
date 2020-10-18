@@ -1,8 +1,14 @@
-#!C:\Users\groso\AppData\Local\Programs\Python\Python37\python.exe
-
+#!C:\Users\groso\AppData\Local\Programs\Python\Python37-32\python.exe
+# -*- coding: utf-8 -*-
 
 print("Content-type: text/html; charset=UTF-8")
 print("")  
+
+import save_db
+import datetime
+
+db = save_db.AnimalitosDb("root", "")
+domicilios = db.get_all("domicilio")
 
 html = f'''
 
@@ -48,251 +54,102 @@ html = f'''
                         <th onclick="sortTable(4)">Total Mascotas</th>
                         <th onclick="sortTable(5)">Total fotos</th>
                     </tr>
-                    <tr onclick="hrefTable('#popup1')">
-                        <td>20/11/2018</td>
-                        <td>Puente Alto</td>
-                        <td>Pullinque</td>
-                        <td>Fernanda</td>
-                        <td>1</td>
-                        <td>2</td>
+                    '''
+print(html)
+domicilio_actual = 0
+for domicilio in domicilios:
+
+    # Comuna del domicilio a informar
+    comuna = db.comuna_by_id(domicilio[2])
+
+    # Cantidad de mascotas en el domicilio a informar
+    suma_mascota = db.count_all_mascotas(domicilio[0])
+
+    # Todas las mascotas del domicilio
+    mascotas_domicilio = db.mascota_from_domicilio(domicilio[0])
+
+    # Contador de fotos
+    cantidad_fotos = 0
+
+    # Por cada mascota, contaremos cuantas fotos
+    for mascota in mascotas_domicilio:
+        cantidad_fotos += db.count_fotos_mascota(mascota[0])
+
+    tabla = f'''
+
+                    <tr onclick="hrefTable('#popup{domicilio_actual}')">
+                        <td>{domicilio[1]}</td>
+                        <td>{comuna}</td>
+                        <td>{domicilio[3]}</td>
+                        <td>{domicilio[6]}</td>
+                        <td>{suma_mascota}</td>
+                        <td>{cantidad_fotos}</td>
                     </tr>
-                    <tr onclick="hrefTable('#popup2')">
-                        <td>19/10/2018</td>
-                        <td>Maipu</td>
-                        <td>Rencor</td>
-                        <td>Juan</td>
-                        <td>8</td>
-                        <td>19</td>
-                    </tr>
-                    <tr onclick="hrefTable('#popup3')">
-                        <td>20/08/2018</td>
-                        <td>La Florida</td>
-                        <td>Vicuña Mackenna</td>
-                        <td>Laura</td>
-                        <td>17</td>
-                        <td>12</td>
-                    </tr>
-                    <tr onclick="hrefTable('#popup4')">
-                        <td>16/01/2018</td>
-                        <td>Santiago</td>
-                        <td>Alameda</td>
-                        <td>Fernando</td>
-                        <td>14</td>
-                        <td>13</td>
-                    </tr>
-                    <tr onclick="hrefTable('#popup5')">
-                        <td>18/03/2017</td>
-                        <td>La Granja</td>
-                        <td>Mexico</td>
-                        <td>Leonardo</td>
-                        <td>6</td>
-                        <td>12</td>
-                    </tr>
+            '''
+    print(tabla)
+    domicilio_actual += 1
+html2 = '''
                 </table>
             </div>
         </section>
     </div>
-        <div id="popup1" class="overlay">
-            <div class="popupBody">
-                <h2 class="tittle">Información de un censo</h2>
-                <a class="cerrar" href="#">&times;</a>
-                <div class="popupContent">
-                    <p class="font-censo">Región: <span>Metropolitana</span></p>
-                    <p class="font-censo">Comuna: <span>Puente Alto</span></p>
-                    <p class="font-censo">Calle: <span>Pasaje Pullinque</span></p>
-                    <p class="font-censo">N°Calle: <span>01274</span></p>
-                    <p class="font-censo">Sector: <span>Andes del Sur</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Nombre: <span>Cristobal</span></p>
-                    <p class="font-censo">Email: <span>cristobal.jaramillo@gmail.com</span></p>
-                    <p class="font-censo">N°Celular: <span>+56931194230</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Tipo: <span>Gato</span></p>
-                    <p class="font-censo">Edad: <span>3</span></p>
-                    <p class="font-censo">Color: <span>Rojo</span></p>
-                    <p class="font-censo">Raza: <span>Dragon fuego</span></p>
-                    <p class="font-censo">Esterilizado: <span>Si</span></p>
-                    <p class="font-censo">Vacunas al día: <span>Si</span></p>
-                    <img class="imagen-censo1" src="/img/img320/agus.jpeg" alt="Mascota" id = "mascota1" onclick="showImage('span-mascota1')"><br>
-                    <img class="imagen-censo2" src="/img/img320/gato1.jpeg" alt="Mascota" onclick="showImage('span-mascota2')"><br>
-                    <img class="imagen-censo3" src="/img/img320/perro.jpg" alt="Mascota" onclick="showImage('span-mascota3')"><br>
-                    <span class="img800" id="span-mascota1">
-                        <img src="img/img800/agus-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota1')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota2">
-                        <img src="img/img800/gato1-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota2')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota3">
-                        <img src="img/img800/perro800.jpg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota3')">&times;</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div id="popup2" class="overlay">
-            <div class="popupBody">
-                <h2 class="tittle">Información de un censo</h2>
-                <a class="cerrar" href="#">&times;</a>
-                <div class="popupContent">
-                    <p class="font-censo">Región: <span>Metropolitana</span></p>
-                    <p class="font-censo">Comuna: <span>Maipu</span></p>
-                    <p class="font-censo">Calle: <span>Pasaje Romanita</span></p>
-                    <p class="font-censo">N°Calle: <span>01574</span></p>
-                    <p class="font-censo">Sector: <span>Villa Juana</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Nombre: <span>Roberto</span></p>
-                    <p class="font-censo">Email: <span>roberto.juan@gmail.com</span></p>
-                    <p class="font-censo">N°Celular: <span>+569877452</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Tipo: <span>Perro</span></p>
-                    <p class="font-censo">Edad: <span>2</span></p>
-                    <p class="font-censo">Color: <span>Cafe</span></p>
-                    <p class="font-censo">Raza: <span>Chimuelo</span></p>
-                    <p class="font-censo">Esterilizado: <span>Si</span></p>
-                    <p class="font-censo">Vacunas al día: <span>Si</span></p>
-                    <img class="imagen-censo1" src="/img/img320/perro1.jpeg" alt="Mascota" onclick="showImage('span-mascota4')"><br>
-                    <img class="imagen-censo2" src="/img/img320/perro2.jpeg" alt="Mascota" onclick="showImage('span-mascota5')"><br>
-                    <img class="imagen-censo3" src="/img/img320/perro3.jpeg" alt="Mascota" onclick="showImage('span-mascota6')"><br>
-                    <span class="img800" id="span-mascota4">
-                        <img src="img/img800/perro1.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota4')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota5">
-                        <img src="img/img800/perro2-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota5')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota6">
-                        <img src="img/img800/perro3.jpeg"  class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota6')">&times;</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div id="popup3" class="overlay">
-            <div class="popupBody">
-                <h2 class="tittle">Información de un censo</h2>
-                <a class="cerrar" href="#">&times;</a>
-                <div class="popupContent">
-                    <p class="font-censo">Región: <span>Metropolitana</span></p>
-                    <p class="font-censo">Comuna: <span>Puente Alto</span></p>
-                    <p class="font-censo">Calle: <span>Pasaje Pullinque</span></p>
-                    <p class="font-censo">N°Calle: <span>01274</span></p>
-                    <p class="font-censo">Sector: <span>Andes del Sur</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Nombre: <span>Cristobal</span></p>
-                    <p class="font-censo">Email: <span>cristobal.jaramillo@gmail.com</span></p>
-                    <p class="font-censo">N°Celular: <span>+56931194230</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Tipo: <span>Gato</span></p>
-                    <p class="font-censo">Edad: <span>3</span></p>
-                    <p class="font-censo">Color: <span>Rojo</span></p>
-                    <p class="font-censo">Raza: <span>Dragon fuego</span></p>
-                    <p class="font-censo">Esterilizado: <span>Si</span></p>
-                    <p class="font-censo">Vacunas al día: <span>Si</span></p>
-                    <img class="imagen-censo1" src="/img/img320/gato2.jpeg" alt="Mascota" onclick="showImage('span-mascota7')"><br>
-                    <img class="imagen-censo2" src="/img/img320/perro4.jpeg" alt="Mascota" onclick="showImage('span-mascota8')"><br>
-                    <img class="imagen-censo3" src="/img/img320/perro5.jpeg" alt="Mascota" onclick="showImage('span-mascota9')"><br>
-                    <span class="img800" id="span-mascota7">
-                        <img src="img/img800/gato2-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota7')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota8">
-                        <img src="img/img800/perro4.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota8')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota9">
-                        <img src="img/img800/perro5-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota9')">&times;</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div id="popup4" class="overlay">
-            <div class="popupBody">
-                <h2 class="tittle">Información de un censo</h2>
-                <a class="cerrar" href="#">&times;</a>
-                <div class="popupContent">
-                    <p class="font-censo">Región: <span>Metropolitana</span></p>
-                    <p class="font-censo">Comuna: <span>Puente Alto</span></p>
-                    <p class="font-censo">Calle: <span>Pasaje Pullinque</span></p>
-                    <p class="font-censo">N°Calle: <span>01274</span></p>
-                    <p class="font-censo">Sector: <span>Andes del Sur</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Nombre: <span>Cristobal</span></p>
-                    <p class="font-censo">Email: <span>cristobal.jaramillo@gmail.com</span></p>
-                    <p class="font-censo">N°Celular: <span>+56931194230</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Tipo: <span>Gato</span></p>
-                    <p class="font-censo">Edad: <span>3</span></p>
-                    <p class="font-censo">Color: <span>Rojo</span></p>
-                    <p class="font-censo">Raza: <span>Dragon fuego</span></p>
-                    <p class="font-censo">Esterilizado: <span>Si</span></p>
-                    <p class="font-censo">Vacunas al día: <span>Si</span></p>
-                    <div>
-                    <img class="imagen-censo1" src="/img/img320/perro6.jpeg" alt="Mascota" onclick="showImage('span-mascota10')"><br>
-                    <img class="imagen-censo2" src="/img/img320/perro7.jpeg" alt="Mascota" onclick="showImage('span-mascota11')"><br>
-                    <img class="imagen-censo3" src="/img/img320/gato3.jpeg" alt="Mascota" onclick="showImage('span-mascota12')"><br>
+    '''
+print(html2)
+
+domicilio_actual = 0
+
+for domicilio in domicilios:
+    region = db.region_by_comunaid(domicilio[2])
+    comuna = db.comuna_by_id(domicilio[2])
+    mascotas = db.mascota_from_domicilio(domicilio[0])
+    tipo_mascota = db.mascota_by_id(mascotas[0][1])
+
+    popup = f'''
+            <div id="popup{domicilio_actual}" class="overlay">
+                <div class="popupBody">
+                    <h2 class="tittle">Información de un censo</h2>
+                    <a class="cerrar" href="#">&times;</a>
+                    <div class="popupContent">
+                        <p class="font-censo">Región: <span>{region}</span></p>
+                        <p class="font-censo">Comuna: <span>{comuna}</span></p>
+                        <p class="font-censo">Calle: <span>{domicilio[3]}</span></p>
+                        <p class="font-censo">N°Calle: <span>{domicilio[4]}</span></p>
+                        <p class="font-censo">Sector: <span>{domicilio[5]}</span></p>
+                        <hr class="censo">
+                        <p class="font-censo">Nombre: <span>{domicilio[6]}</span></p>
+                        <p class="font-censo">Email: <span>{domicilio[7]}</span></p>
+                        <p class="font-censo">N°Celular: <span>{domicilio[8]}</span></p>
+                        <hr class="censo">
+                        <p class="font-censo">Tipo: <span>{tipo_mascota}</span></p>
+                        <p class="font-censo">Edad: <span>{mascotas[0][2]}</span></p>
+                        <p class="font-censo">Color: <span>{mascotas[0][3]}</span></p>
+                        <p class="font-censo">Raza: <span>{mascotas[0][4]}</span></p>
+                        <p class="font-censo">Esterilizado: <span>{db.esterilizado(mascotas[0][5])}</span></p>
+                        <p class="font-censo">Vacunas al día: <span>{db.esterilizado(mascotas[0][6])}</span></p>
+                        <img class="imagen-censo1" src="/img/img320/agus.jpeg" alt="Mascota" id = "mascota1" onclick="showImage('span-mascota1')"><br>
+                        <img class="imagen-censo2" src="/img/img320/gato1.jpeg" alt="Mascota" onclick="showImage('span-mascota2')"><br>
+                        <img class="imagen-censo3" src="/img/img320/perro.jpg" alt="Mascota" onclick="showImage('span-mascota3')"><br>
+                        <span class="img800" id="span-mascota1">
+                            <img src="img/img800/agus-800.jpeg" class="imagen-ampliada" alt="Mascota">
+                            <a class="cerrar" onclick="hideImage('span-mascota1')">&times;</a>
+                        </span>
+                        <span class="img800" id="span-mascota2">
+                            <img src="img/img800/gato1-800.jpeg" class="imagen-ampliada" alt="Mascota">
+                            <a class="cerrar" onclick="hideImage('span-mascota2')">&times;</a>
+                        </span>
+                        <span class="img800" id="span-mascota3">
+                            <img src="img/img800/perro800.jpg" class="imagen-ampliada" alt="Mascota">
+                            <a class="cerrar" onclick="hideImage('span-mascota3')">&times;</a>
+                        </span>
                     </div>
-                    <span class="img800" id="span-mascota10">
-                        <img src="img/img800/perro6-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota10')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota11">
-                        <img src="img/img800/perro7-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota11')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota12">
-                        <img src="img/img800/gato3-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                        <a class="cerrar" onclick="hideImage('span-mascota12')">&times;</a>
-                    </span>
                 </div>
             </div>
-        </div>
-        <div id="popup5" class="overlay">
-            <div class="popupBody">
-                <h2 class="tittle">Información de un censo</h2>
-                <a class="cerrar" href="#">&times;</a>
-                <div class="popupContent">
-                    <p class="font-censo">Región: <span>Metropolitana</span></p>
-                    <p class="font-censo">Comuna: <span>Puente Alto</span></p>
-                    <p class="font-censo">Calle: <span>Pasaje Pullinque</span></p>
-                    <p class="font-censo">N°Calle: <span>01274</span></p>
-                    <p class="font-censo">Sector: <span>Andes del Sur</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Nombre: <span>Cristobal</span></p>
-                    <p class="font-censo">Email: <span>cristobal.jaramillo@gmail.com</span></p>
-                    <p class="font-censo">N°Celular: <span>+56931194230</span></p>
-                    <hr class="censo">
-                    <p class="font-censo">Tipo: <span>Gato</span></p>
-                    <p class="font-censo">Edad: <span>3</span></p>
-                    <p class="font-censo">Color: <span>Rojo</span></p>
-                    <p class="font-censo">Raza: <span>Dragon fuego</span></p>
-                    <p class="font-censo">Esterilizado: <span>Si</span></p>
-                    <p class="font-censo">Vacunas al día: <span>Si</span></p>
-                    <img class="imagen-censo1" src="/img/img320/rana1.jpeg" alt="Mascota" onclick="showImage('span-mascota13')"><br>
-                    <img class="imagen-censo2" src="/img/img320/perro8.jpeg" alt="Mascota" onclick="showImage('span-mascota14')"><br>
-                    <img class="imagen-censo3" src="/img/img320/perro9.jpeg" alt="Mascota" onclick="showImage('span-mascota15')"><br>
-                    <span class="img800" id="span-mascota13">
-                            <img src="img/img800/rana1-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                            <a class="cerrar" onclick="hideImage('span-mascota13')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota14">
-                            <img src="img/img800/perro8-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                            <a class="cerrar" onclick="hideImage('span-mascota14')">&times;</a>
-                    </span>
-                    <span class="img800" id="span-mascota15">
-                            <img src="img/img800/perro9-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                            <a class="cerrar" onclick="hideImage('span-mascota15')">&times;</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+            '''
+    print(popup)
+print ('''        
 </body>
 </html>
 
 
-'''
+''')
 
-print(html)
