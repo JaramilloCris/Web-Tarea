@@ -100,7 +100,7 @@ if len(form) > 0:
                         mensaje = "Hemos recibido su información, muchas gracias por colaborar"
                         data_foto = (
 
-                        "./tmp/" + fn, fn
+                        "tmp/" + fn, fn
                         )
                         fotos_actual_mascota.append(data_foto)
                         tipo_real = filetype.guess("./tmp/" + fn)

@@ -1,12 +1,8 @@
 #!C:\Users\groso\AppData\Local\Programs\Python\Python37\python.exe
 # -*- coding: utf-8 -*-
 
-
-
 print("Content-type: text/html; charset=UTF-8")
 print("")   
-
-
 
 import save_db
 
@@ -66,7 +62,7 @@ html = f'''
 print(html)
 number_domicilio = -1
 for p in last_domicilio:
-    source_foto = db.image_from_domicilio(last_domicilio[number_domicilio][0])[0][0]
+    source_foto = db.image_from_domicilio(last_domicilio[number_domicilio][0],1)[0][0]
     number_domicilio-=1
 
 

@@ -493,8 +493,14 @@ hr.censo{
     top: 0;
     left: 3%;
     visibility: hidden;
+    transition: opacity 100ms;
+    opacity: 1;
+   
+}
+.img800:target {
 
-    
+    visibility: visible;
+    opacity: 1;
 }
 
 .imagen-ampliada{
@@ -505,6 +511,7 @@ hr.censo{
     background-color: #5DC1B9;
     border-radius: 5px;
     padding: 50px;
+    transition: all 0.3s ease-in-out;
 }
 
 .info-div{

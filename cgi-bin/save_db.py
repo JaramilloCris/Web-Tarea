@@ -166,10 +166,10 @@ class AnimalitosDb:
         self.cursor.execute(sql)
         return self.cursor.fetchall()
 
-    def image_from_domicilio(self, id_domicilio):
+    def image_from_domicilio(self, id_domicilio, limite):
 
         sql = f'''
-        SELECT ruta_archivo FROM mascota_domicilio INNER JOIN foto_mascota ON mascota_domicilio.id = foto_mascota.mascota_domicilio_id WHERE domicilio_id = {id_domicilio} LIMIT 1
+        SELECT ruta_archivo FROM mascota_domicilio INNER JOIN foto_mascota ON mascota_domicilio.id = foto_mascota.mascota_domicilio_id WHERE domicilio_id = {id_domicilio} LIMIT {limite}
         '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()

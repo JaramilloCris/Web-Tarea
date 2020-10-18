@@ -103,6 +103,7 @@ for domicilio in domicilios:
     comuna = db.comuna_by_id(domicilio[2])
     mascotas = db.mascota_from_domicilio(domicilio[0])
     tipo_mascota = db.mascota_by_id(mascotas[0][1])
+    imagenes_mascota = db.image_from_domicilio(domicilio[0], 3)
 
     popup = f'''
             <div id="popup{domicilio_actual}" class="overlay">
@@ -126,26 +127,33 @@ for domicilio in domicilios:
                         <p class="font-censo">Raza: <span>{mascotas[0][4]}</span></p>
                         <p class="font-censo">Esterilizado: <span>{db.esterilizado(mascotas[0][5])}</span></p>
                         <p class="font-censo">Vacunas al día: <span>{db.esterilizado(mascotas[0][6])}</span></p>
-                        <img class="imagen-censo1" src="/img/img320/agus.jpeg" alt="Mascota" id = "mascota1" onclick="showImage('span-mascota1')"><br>
-                        <img class="imagen-censo2" src="/img/img320/gato1.jpeg" alt="Mascota" onclick="showImage('span-mascota2')"><br>
-                        <img class="imagen-censo3" src="/img/img320/perro.jpg" alt="Mascota" onclick="showImage('span-mascota3')"><br>
+    '''
+    print(popup)
+    domicilio_actual+=1
+    for i in range(len(imagenes_mascota)):
+        image_html = f'''
+                        <img class="imagen-censo{i+1}" src=/{imagenes_mascota[i][0]} alt="Mascota" id = "mascota1" onclick="showImage('span-mascota{i+1}')"><br>
+
+        '''
+        print(image_html)
+
+    print ('''
                         <span class="img800" id="span-mascota1">
-                            <img src="img/img800/agus-800.jpeg" class="imagen-ampliada" alt="Mascota">
+                            <img src="/img/img800/agus-800.jpeg" class="imagen-ampliada" alt="Mascota">
                             <a class="cerrar" onclick="hideImage('span-mascota1')">&times;</a>
                         </span>
                         <span class="img800" id="span-mascota2">
-                            <img src="img/img800/gato1-800.jpeg" class="imagen-ampliada" alt="Mascota">
+                            <img src="/img/img800/gato1-800.jpeg" class="imagen-ampliada" alt="Mascota">
                             <a class="cerrar" onclick="hideImage('span-mascota2')">&times;</a>
                         </span>
                         <span class="img800" id="span-mascota3">
-                            <img src="img/img800/perro800.jpg" class="imagen-ampliada" alt="Mascota">
+                            <img src="/img/img800/perro800.jpg" class="imagen-ampliada" alt="Mascota">
                             <a class="cerrar" onclick="hideImage('span-mascota3')">&times;</a>
                         </span>
                     </div>
                 </div>
             </div>
-            '''
-    print(popup)
+            ''')
 print ('''        
 </body>
 </html>
