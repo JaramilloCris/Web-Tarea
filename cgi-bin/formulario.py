@@ -131,55 +131,33 @@ if len(form) > 0:
 
         # Se guarda el domicilio en la db
         db.save_domicilio(data_domicilio)
+        id_domicilio = db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value)
 
         for i in range(actual_mascota):
+
+            # Valores
+            tipo_mascota = int(form["tipo-mascota"][i].value) if type(form["tipo-mascota"]) == list else int(form["tipo-mascota"].value)
+            edad_mascota = int(form["edad-mascota"][i].value) if type(form["edad-mascota"]) == list else int(form["edad-mascota"].value)
+            color_mascota = form["color-mascota"][i].value if type(form["color-mascota"]) == list else form["color-mascota"].value
+            raza_mascota = form["raza-mascota"][i].value if type(form["raza-mascota"]) == list else form["raza-mascota"].value
+            esterilizado_mascota = int(form["esterilizado-mascota"][i].value) if type(form["esterilizado-mascota"]) == list else int(form["esterilizado-mascota"].value)
+            vacunas_mascota = int(form["vacunas-mascota"][i].value) if type(form["vacunas-mascota"]) == list else int(form["vacunas-mascota"].value)
+            otro_mascota = form["otro-mascota"][i].value if type(form["otro-mascota"]) == list else form["otro-mascota"].value
         
-            # Arreglo, si son mas de una es una lista, si no un valor
-            if type(form["tipo-mascota"]) == list:
+            # El usuario ingresara una nueva mascota
+            if tipo_mascota == 9:
                 
+                # Si no se encuentra en la base de datos, la incluyo
+                if db.id_mascota_by_name(otro_mascota) == []:
+                    db.save_new_mascota(otro_mascota)
+                
+                # El tipo de mascota sera el del input otro-mascota
+                tipo_mascota = db.id_mascota_by_name(otro_mascota)[0][0]
 
-                data_mascota = (
 
-                    int(form["tipo-mascota"][i].value), \
-                        int(form["edad-mascota"][i].value), form["color-mascota"][i].value, \
-                            form["raza-mascota"][i].value, int(form["esterilizado-mascota"][i].value), \
-                                int(form["vacunas-mascota"][i].value), db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value)
-                )
-                db.save_mascota_domicilio(data_mascota)
-
-                id_mascota = db.get_mascota_id(form["tipo-mascota"][i].value, form["edad-mascota"][i].value, \
-                    form["color-mascota"][i].value, db.get_domicilio_id(form["calle"].value, \
-                        form["sector"].value, form["nombre"].value), form["raza-mascota"][i].value)
-
-            else:
-
-                # El usuario ingresara una nueva mascota
-                if form["tipo-mascota"].value == "9":
-                    
-                    # Si no se encuentra en la base de datos, la incluyo
-                    if db.id_mascota_by_name(form["otro-mascota"].value) == []:
-                        db.save_new_mascota(form["otro-mascota"].value)
-                    
-                    # El tipo de mascota sera el del input otro-mascota
-                    tipo_mascota = db.id_mascota_by_name(form["otro-mascota"].value)[0][0]
-
-                # Es una mascota que esta en la base de datos
-                else:
-                    tipo_mascota = form["tipo-mascota"].value
-
-                # Datos para incluir a una mas
-                data_mascota = (
-
-                    int(tipo_mascota), \
-                        int(form["edad-mascota"].value), form["color-mascota"].value, form["raza-mascota"].value, \
-                            int(form["esterilizado-mascota"].value), int(form["vacunas-mascota"].value), \
-                                db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value)
-                )
-                db.save_mascota_domicilio(data_mascota)
-
-                # El id de la nueva mascota
-                id_mascota = db.get_mascota_id(tipo_mascota, form["edad-mascota"].value, form["color-mascota"].value, \
-                    db.get_domicilio_id(form["calle"].value, form["sector"].value, form["nombre"].value), form["raza-mascota"].value)
+            data_mascota = (tipo_mascota, edad_mascota, color_mascota, raza_mascota, esterilizado_mascota, vacunas_mascota, id_domicilio)
+            db.save_mascota_domicilio(data_mascota)
+            id_mascota = db.get_mascota_id(tipo_mascota, edad_mascota, color_mascota, id_domicilio, raza_mascota)
 
             # Guardo las fotos en la base de datos
             for j in range(len(fotos_array[i])):
@@ -190,7 +168,7 @@ if len(form) > 0:
 
         for i in range(len(fotos_array)):
 
-            os.remove(fotos_array[0][0])
+            os.remove(fotos_array[i][0])
 
 
 html = f'''

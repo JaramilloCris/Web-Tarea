@@ -56,7 +56,6 @@ class AnimalitosDb:
         INSERT INTO tipo_mascota(nombre) 
         VALUES(%s)
         '''
-        print(sql)
         self.cursor.execute(sql, (name,))
         self.db.commit()
 
