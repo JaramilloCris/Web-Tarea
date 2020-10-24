@@ -16,6 +16,12 @@ class AnimalitosDb:
             database = "tarea2"
         )
         self.cursor = self.db.cursor()
+
+    def get_last_id(self):
+
+        sql = '''SELECT LAST_INSERT_ID()'''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()[0][0]
     
     def save_domicilio(self, data):
 
@@ -27,6 +33,8 @@ class AnimalitosDb:
         '''
         self.cursor.execute(sql, data)
         self.db.commit()
+        return self.get_last_id()
+
 
     def save_mascota_domicilio(self, data):
 
@@ -38,6 +46,7 @@ class AnimalitosDb:
         '''
         self.cursor.execute(sql, data)
         self.db.commit()
+        return self.get_last_id()
     
     def save_foto_mascota(self, data):
 
@@ -58,6 +67,7 @@ class AnimalitosDb:
         '''
         self.cursor.execute(sql, (name,))
         self.db.commit()
+        
 
     def get_all(self, table):
 

@@ -192,7 +192,7 @@ p {
     margin-right: 100px;
     height: auto;
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 60%;
     max-height: 180px;
     border-radius: 30px;
@@ -519,6 +519,40 @@ hr.censo{
     margin-bottom: 7%;
     padding-bottom: 10px;
     width: 100%;
+}
+
+.button-nav{
+
+    position: absolute;
+    
+}
+
+.button-ref{
+
+    margin: auto;
+    height: 100%;
+    display: inline-block;
+    border-radius: 6px;
+    background-color: #5DC1B9;
+    border: none;
+    color: black;
+    padding: 3px 6px;
+    justify-content: space-between;
+
+}
+
+.button-ref:hover{
+
+    margin: auto;
+    height: 100%;
+    display: inline-block;
+    border-radius: 6px;
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 3px 4px;
+    justify-content: space-between;
+
 }
 
 @media (max-width:960px){

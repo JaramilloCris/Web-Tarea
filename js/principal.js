@@ -195,3 +195,15 @@ function clonar(id) {
 
 }
 
+function change_table(number){
+
+    var url = document.URL;
+    var search_params = url.searchParams;
+
+    search_params.append('id', '101');
+
+
+    // output : http://demourl.com/path?id=100&id=101&id=102&topic=main
+    document.write(url);
+
+}

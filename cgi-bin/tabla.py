@@ -59,6 +59,9 @@ print(html)
 domicilio_actual = 0
 for domicilio in domicilios:
 
+    if domicilio_actual == 5:
+        break
+
     # Comuna del domicilio a informar
     comuna = db.comuna_by_id(domicilio[2])
 
@@ -88,13 +91,23 @@ for domicilio in domicilios:
             '''
     print(tabla)
     domicilio_actual += 1
-html2 = '''
+print('''
                 </table>
+                <div class= "button-nav">
+                ''')
+cantidad_botones= (len(domicilios)-1)//5
+for i in range(cantidad_botones+1):
+    print(f'''
+                    <a onclick="change_table(2)" class="button-ref">{i+1}</a>
+            ''')
+
+print('''
+                </div>
             </div>
         </section>
     </div>
-    '''
-print(html2)
+    ''')
+
 
 domicilio_actual = 0
 
