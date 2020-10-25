@@ -6,9 +6,14 @@ print("")
 
 import save_db
 import datetime
+import cgi, os
+import cgitb; cgitb.enable()
 
 db = save_db.AnimalitosDb("root", "")
 domicilios = db.get_all("domicilio")
+
+datos = cgi.FieldStorage()
+iden = int(datos["id"].value)
 
 html = f'''
 
@@ -39,7 +44,7 @@ html = f'''
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
                     <a href="formulario.py" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
-                    <a href="tabla.py" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="tabla.py?id=0" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
                     <a href="estadisticas.py" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
@@ -57,7 +62,7 @@ html = f'''
                     '''
 print(html)
 domicilio_actual = 0
-for domicilio in domicilios:
+for domicilio in domicilios[iden*5:iden+5]:
 
     if domicilio_actual == 5:
         break
@@ -98,7 +103,7 @@ print('''
 cantidad_botones= (len(domicilios)-1)//5
 for i in range(cantidad_botones+1):
     print(f'''
-                    <a onclick="change_table(2)" class="button-ref">{i+1}</a>
+                    <a href=tabla.py?id={i} class="button-ref">{i+1}</a>
             ''')
 
 print('''

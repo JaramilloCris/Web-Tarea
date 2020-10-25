@@ -38,7 +38,7 @@ html = f'''
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
                     <a href="formulario.py" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
-                    <a href="tabla.py" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="tabla.py?id=0" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
                     <a href="estadisticas.py" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
@@ -60,10 +60,10 @@ html = f'''
                     <h2>Últimas mascotas informadas</h2>
                     '''
 print(html)
-number_domicilio = -1
+number_domicilio = 0
 for p in last_domicilio:
-    source_foto = db.image_from_domicilio(last_domicilio[number_domicilio][0],1)[0][0]
-    number_domicilio-=1
+    source_foto = db.image_from_domicilio(p[0],1)[0][0]
+    number_domicilio+=1
 
 
     val = f'''<hr class="new">

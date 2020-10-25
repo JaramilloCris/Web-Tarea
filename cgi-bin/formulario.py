@@ -87,7 +87,7 @@ if len(form) > 0:
                     if size <= MAX_FILE_SIZE:
 
                         fn = os.path.basename(fileitem.filename)
-                        f = open("./tmp/" + fn, 'wb')
+                        f = open("tmp/" + fn, 'wb')
                         file_d = fileitem.file.read()
                         f.write(file_d)
                         f.close()
@@ -156,9 +156,9 @@ if len(form) > 0:
         
     # Las fotos tuvieron error al subirse, las borro de la carpeta tmp
     else:
-
-        for i in range(len(fotos_array)):
-            os.remove(fotos_array[i][0])
+        for mascota_fotos in fotos_array:
+            for foto in mascota_fotos:
+                os.remove(foto[0])
 
 
 html = f'''
@@ -189,7 +189,7 @@ html = f'''
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
                     <a href="formulario.py" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
-                    <a href="tabla.py" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="tabla.py?id=0" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
                     <a href="estadisticas.py" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>

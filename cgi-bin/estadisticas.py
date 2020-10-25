@@ -33,24 +33,24 @@ html = f'''
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
                     <a href="formulario.py" class="nav-ref"><span class="nav-item"></span>Informar mascotas</a>
-                    <a href="tabla.py" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
+                    <a href="tabla.py?id=0" class="nav-ref"><span class="nav-item"></span>Ver listado de mascotas</a>
                     <a href="estadisticas.py" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
             <div class="container-content">
                 <div>
                     <h1 class="tittle">Grafico de censos diarios</h1>
-                    <img src="img/graficos/grafico1.png" alt="Image" class="imagen-graficos">
+                    <img src="/img/graficos/grafico1.png" alt="Image" class="imagen-graficos">
                 </div>
                 <hr class="new">
                 <div>
                     <h1 class="tittle">Grafico de los distintos tipos de mascotas</h1>
-                    <img src="img/graficos/grafico2.png" alt="Image" class="imagen-graficos">
+                    <img src="/img/graficos/grafico2.png" alt="Image" class="imagen-graficos">
                 </div>
                 <hr class="new">
                 <div>
                     <h1 class="tittle">Grafico de Perros v/s Gatos</h1>
-                    <img src="img/graficos/grafico3.png" alt="Image" class="imagen-graficos">
+                    <img src="/img/graficos/grafico3.png" alt="Image" class="imagen-graficos">
                 </div>
             </div>
         </section>
