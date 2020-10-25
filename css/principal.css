@@ -157,20 +157,25 @@ p {
 
 }
 
+
+.div-photomain {
+
+    position: relative;
+    left: -10%;
+
+}
+
 .font-informado{
 
     font-size: 30px;
     color: white;
 }
 
-.imagen-mascota{
-
+.imagen-mascota {
     float: right;
-    margin-right: 90px;
-    max-height: 160px;
-    width: 30%;
+    width: 300px;
+    height: 180px;
     border-radius: 30px;
-    height: auto;
     border: 5px solid #5DC1B9;
 }
 
@@ -616,17 +621,15 @@ hr.censo{
     }
     .imagen-mascota {
 
-        float: right;
-        margin-right: 100px;
+        float: unset;
         min-width: 30%;
-        max-width: 30%;
-        width: 30%;
-        border-radius: 20px;
-        height: auto;
-        max-height: 130px;
-
-
-        border: 3px solid #5DC1B9;
+        min-height: 30%;
+        width: 212px;
+        height: 149px;
+        border-radius: 30px;
+        border: 5px solid #5DC1B9;
+        left: 10%;
+        position: relative;
     }
 
 

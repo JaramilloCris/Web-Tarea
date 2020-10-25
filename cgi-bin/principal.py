@@ -50,10 +50,7 @@ html = f'''
                 <div class="info-div">
                     <h2 class="tittle">Bienvenidos a Animalitos</h2>
                     <p style="line-height: 110%; text-align: center">Animalitos es la primera pagina web encargada de realizar
-                        un censo a las mascotas del país <br>
-                        contamos con una gran cantidad de datos
-                        de las distintas mascotas de todos los chilenos, <br> no te quedes fuera de esta
-                        gran iniciativa</p>
+                        un censo a las mascotas del país <br></p>
                 </div>
                 <div class="container-me">
 
@@ -68,10 +65,13 @@ for p in last_domicilio:
 
     val = f'''<hr class="new">
         <div>
-
-            <img class="imagen-mascota" src="/{source_foto}" alt="Mascota">
-            <a class="font-mascotas">Comuna: </a><a class="font-informado"> {str(db.comuna_by_id(p[2]))}</a><br>
-            <a class="font-mascotas">Calle: </a><a class="font-informado"> {str(p[3])}</a><br>
+            <div class="div-photomain">
+                <img class="imagen-mascota" src="/{source_foto}" alt="Mascota">
+            </div>
+            <div>
+                <a class="font-mascotas">Comuna: </a><a class="font-informado"> {str(db.comuna_by_id(p[2]))}</a><br>
+                <a class="font-mascotas">Calle: </a><a class="font-informado"> {str(p[3])}</a><br>
+            </div>
         '''
     print(val)
     mascotas_domicilio = db.get_sum_mascotas(p[0])
