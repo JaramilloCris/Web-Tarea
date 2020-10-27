@@ -12,8 +12,14 @@ import cgitb; cgitb.enable()
 db = save_db.AnimalitosDb("root", "")
 domicilios = db.get_all("domicilio")
 
+# Field para obtener en que valor de la tabla se encuentra actualmente
 datos = cgi.FieldStorage()
+
+# Se obtiene el parametro id que representa el valor actual de la tabla
 iden = int(datos["id"].value)
+
+# Cantidad de botones para moverse en la tabla
+cantidad_botones= (len(domicilios)-1)//5
 
 html = f'''
 
@@ -29,6 +35,15 @@ html = f'''
     <link rel="stylesheet" href="/css/principal.css"/>
     <link rel="icon" type="image/jpeg" href="img/simon.jpeg">
     <script src="/js/principal.js"></script>
+
+    <script>
+
+        update_page({iden}, {cantidad_botones})
+    
+
+
+    
+    </script>
 
 </head>
 <body class="main">
@@ -62,8 +77,7 @@ html = f'''
                     '''
 print(html)
 domicilio_actual = 0
-for domicilio in domicilios[iden*5:iden+5]:
-
+for domicilio in domicilios[iden*5:(iden*5)+5]:
     if domicilio_actual == 5:
         break
 
@@ -98,15 +112,17 @@ for domicilio in domicilios[iden*5:iden+5]:
     domicilio_actual += 1
 print('''
                 </table>
+                <br>
                 <div class= "button-nav">
+                    <a onclick="previous_page();" class="button-ref">Anterior</a>
                 ''')
-cantidad_botones= (len(domicilios)-1)//5
 for i in range(cantidad_botones+1):
     print(f'''
-                    <a href=tabla.py?id={i} class="button-ref">{i+1}</a>
+                    <a onclick = "update_page({i}, {cantidad_botones})" href=tabla.py?id={i} class="button-ref">{i+1}</a>
             ''')
 
 print('''
+                    <a onclick="next_page();" class="button-ref">Proxima</a>
                 </div>
             </div>
         </section>

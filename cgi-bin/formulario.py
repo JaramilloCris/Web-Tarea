@@ -306,8 +306,8 @@ html = f'''
                         </div>
                         <div>
                             <label for="id-foto0-0">Foto:</label>
+                            <small class="form-text text-muted">Tamaño maximo: 10mb por foto</small>
 
-                            <br>
                             <input name="foto-mascota0" id="id-foto0-0" size="15" type="file" required>
 
                             <button class="button-sub" type="button" id="addFile0" onclick="addInputFile(4, 'container-file0', 0)">Añadir archivos</button>

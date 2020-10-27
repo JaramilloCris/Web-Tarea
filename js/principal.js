@@ -92,6 +92,11 @@ function buscar_ciudad(){
         comunas = regionesConComunas[region];
 
         com.innerHTML = '';
+        var emptyOption = document.createElement('option');
+        emptyOption.appendChild(document.createTextNode('Seleccione Comuna'));
+        emptyOption.value = "";
+        com.appendChild(emptyOption);
+
         for(i=0;i < comunas.length; i++){
 
             var opt = document.createElement('option');
@@ -206,4 +211,36 @@ function change_table(number){
     // output : http://demourl.com/path?id=100&id=101&id=102&topic=main
     document.write(url);
 
+}
+
+let actual_page_table = 0
+let max_page_table = 0
+
+function update_page(actual, max){
+
+    actual_page_table = actual;
+    max_page_table = max;
+}
+
+
+function next_page(){
+
+    if(actual_page_table < max_page_table){
+        actual_page_table = actual_page_table + 1;
+        var url = new URL(location.href)
+        url.searchParams.set('id', actual_page_table.toString());
+        var modifiedUrl = url.toString();
+        document.location = modifiedUrl;
+    }
+}
+
+function previous_page(){
+
+    if(actual_page_table > 0){
+        actual_page_table = actual_page_table - 1;
+        var url = new URL(location.href)
+        url.searchParams.set('id', actual_page_table.toString());
+        var modifiedUrl = url.toString();
+        document.location = modifiedUrl;
+    }
 }

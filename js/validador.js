@@ -5,7 +5,6 @@ function mostrarError(msg){
     mensajeError.innerHTML = msg;
     hrefTable('#popup-error');
 
-
 }
 
 function validarFormulario(){
@@ -15,13 +14,13 @@ function validarFormulario(){
     /** @type string */ let comuna = document.getElementById('comuna').value;
 
     if(region === ""){
-        console.log("u");
         mostrarError("Seleccione una Region");
         return false;
     }
 
+
     else if(comuna === ""){
-        mostrarError("Seleccione una comuna");
+        mostrarError("Seleccione una Comuna");
         return false;
     }
 
