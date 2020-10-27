@@ -63,7 +63,7 @@ html = f'''
                     <a href="estadisticas.py" class="nav-ref"><span class="nav-item"></span>Estadisticas</a>
                 </nav>
             </div>
-            <div class="container-content">
+            <div class="container-content" style="overflow-x:auto;">
 
                 <table id="myTable">
                     <tr>
@@ -77,7 +77,11 @@ html = f'''
                     '''
 print(html)
 domicilio_actual = 0
+
+# Por cada domicilio entre los actuales
 for domicilio in domicilios[iden*5:(iden*5)+5]:
+
+    # Solo 5 domicilios
     if domicilio_actual == 5:
         break
 
