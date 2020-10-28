@@ -8,7 +8,10 @@ import cgi, os
 import cgitb; cgitb.enable()
 import save_db as sd
 import datetime
-import filetype
+import imghdr
+import hashlib
+import time
+from PIL import Image
 
 # Saco el formulario y acceso a la base de datos
 form = cgi.FieldStorage()
@@ -19,11 +22,14 @@ state_formulario = 'visible'
 state_result = 'hidden'
 
 # Tamaño maximo del archivo
-MAX_FILE_SIZE = 1000000
+MAX_FILE_SIZE = 10000000
 
 # Mensaje de proceso
 mensaje = "Hemos recibido su información, muchas gracias por colaborar"
 popup = '#'
+
+# Formatos aceptados
+imagen_accept = ["jpg", "png", "jpeg"]
 
 # Tamaño del archivo ingresado
 size = 0
@@ -52,6 +58,8 @@ if len(form) > 0:
     )
 
     fotos_array = []
+    fotos_320 = []
+    fotos_800 = []
 
     # Por cada mascota, revisaremos sus fotos
     while mensaje == "Hemos recibido su información, muchas gracias por colaborar":
@@ -86,31 +94,66 @@ if len(form) > 0:
                     # Si el file es menor al tamaño maximo
                     if size <= MAX_FILE_SIZE:
 
-                        fn = os.path.basename(fileitem.filename)
+                        # Obtenemos la extension del archivo
+                        file_extension = os.path.splitext(fileitem.filename)
+
+                        # Hacemos una funcion de hash para evitar choques de nombres
+
+                        name_hash = hashlib.sha1((repr(time.time())).encode('utf-8')).hexdigest()
+                        fn = name_hash + file_extension[1]
+
+                        # Guardamos el archivo
                         f = open("tmp/" + fn, 'wb')
                         file_d = fileitem.file.read()
                         f.write(file_d)
                         f.close()
                         mensaje = "Hemos recibido su información, muchas gracias por colaborar"
+
+                        # Guardamos la informacion de la imagen
                         data_foto = (
 
                         "tmp/" + fn, fn
                         )
                         fotos_actual_mascota.append(data_foto)
-                        tipo_real = filetype.guess("./tmp/" + fn)
-                        if tipo_real == None or "image" not in tipo_real.mime:
+
+                        # Script que verifica el tipo
+                        tipo_real = imghdr.what("tmp/" + fn)
+                        if tipo_real == None or tipo_real not in imagen_accept:
 
                             mensaje = "Archivo no soportado"
                             break
+                        
+                        # Script para convertir la imagen original a una de 320x240 y otra de 800x600
 
+                        # Se convierte a RGB para evitar problemas
+                        image = Image.open("tmp/" + fn).convert('RGB')
+
+                        # Se renderiza una nueva imagen con las dimensiones 
+                        new_image_320 = image.resize((320, 240))
+                        new_image_800 = image.resize((800, 600))
+
+                        # Se guardan sus direccion, pues en caso de error hay que borrarlas
+                        name_320 = "tmp/" + name_hash + "image320" + file_extension[1]
+                        name_800 = "tmp/" + name_hash + "image800" + file_extension[1]
+
+                        # Se guardan las imagenes en el directorio
+                        new_image_320.save(name_320)
+                        fotos_320.append(name_320)
+                        new_image_800.save(name_800)
+                        fotos_800.append(name_800)
+
+                    # Caso donde el archivo excede el permitido
                     else:
 
                         mensaje = "El archivo pesa mucho"
                         break
              
+                # Caso donde ocurre un error en algun procesamiento
                 except IOError as e:
                     mensaje = "Error"
                     break
+                
+            # No hay archivo
             else:
 
                 mensaje = "No se recibio el archivo"
@@ -158,7 +201,16 @@ if len(form) > 0:
     else:
         for mascota_fotos in fotos_array:
             for foto in mascota_fotos:
+
                 os.remove(foto[0])
+
+        for img in fotos_320:
+            os.remove(img)
+
+        for img in fotos_800:
+            os.remove(img)
+
+
 
 
 html = f'''

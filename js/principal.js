@@ -118,7 +118,10 @@ function hrefTable(tipo){
 
 function showImage(idImage){
 
+    
+
     var popup = document.getElementById(idImage);
+    console.log(popup);
     popup.style.visibility = "visible";
 
 }

@@ -40,9 +40,6 @@ html = f'''
 
         update_page({iden}, {cantidad_botones})
     
-
-
-    
     </script>
 
 </head>
@@ -136,7 +133,8 @@ print('''
 
 domicilio_actual = 0
 
-for domicilio in domicilios:
+for domicilio in domicilios[iden*5:(iden*5)+5]:
+    
     region = db.region_by_comunaid(domicilio[2])
     comuna = db.comuna_by_id(domicilio[2])
     mascotas = db.mascota_from_domicilio(domicilio[0])
@@ -166,33 +164,46 @@ for domicilio in domicilios:
                         <p class="font-censo">Esterilizado: <span>{db.esterilizado(mascotas[0][5])}</span></p>
                         <p class="font-censo">Vacunas al día: <span>{db.esterilizado(mascotas[0][6])}</span></p>
     '''
-    print(popup)
-    domicilio_actual+=1
-    for i in range(len(imagenes_mascota)):
-        image_html = f'''
-                        <img class="imagen-censo{i+1}" src=/{imagenes_mascota[i][0]} alt="Mascota" id = "mascota1" onclick="showImage('span-mascota{i+1}')"><br>
 
+    print(popup)
+    
+
+    for i in range(len(imagenes_mascota)):
+
+        num_im_actual = iden*5 + domicilio_actual + i
+        name_image = os.path.splitext(imagenes_mascota[i][0])
+        
+        image_html = f'''
+                        <div class="div-censo{i+1}">
+                            <img class="imagen-censo{i+1}" src=/{name_image[0] + "image320" + name_image[1]} alt="Mascota" id = "mascota1" onclick="showImage('span-mascota{num_im_actual}')"><br>
+                        </div>
         '''
         print(image_html)
 
-    print ('''
-                        <span class="img800" id="span-mascota1">
-                            <img src="/img/img800/agus-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                            <a class="cerrar" onclick="hideImage('span-mascota1')">&times;</a>
-                        </span>
-                        <span class="img800" id="span-mascota2">
-                            <img src="/img/img800/gato1-800.jpeg" class="imagen-ampliada" alt="Mascota">
-                            <a class="cerrar" onclick="hideImage('span-mascota2')">&times;</a>
-                        </span>
-                        <span class="img800" id="span-mascota3">
-                            <img src="/img/img800/perro800.jpg" class="imagen-ampliada" alt="Mascota">
-                            <a class="cerrar" onclick="hideImage('span-mascota3')">&times;</a>
-                        </span>
+    for i in range(len(imagenes_mascota)):
+
+        num_im_actual = iden*5 + domicilio_actual +i
+        name_image = os.path.splitext(imagenes_mascota[i][0])
+
+        popup_image = f'''
+
+                        <div class="span-div">
+                            <span class="img800" id="span-mascota{num_im_actual}">
+                                <img src=/{name_image[0] + "image800" + name_image[1]} class="imagen-ampliada" alt="Mascota">
+                                <a class="cerrar" onclick="hideImage('span-mascota{num_im_actual}')">&times;</a>
+                            </span>
+                        </div>
+
+        '''
+        print(popup_image)
+    print('''
                     </div>
                 </div>
             </div>
-            ''')
-print ('''        
+    ''')
+    domicilio_actual+=1
+    
+print('''
 </body>
 </html>
 

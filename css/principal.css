@@ -192,26 +192,13 @@ p {
 
 .imagen-censo1{
 
-
-    float: right;
-    margin-right: 100px;
-    height: auto;
-    position: absolute;
-    top: 20%;
-    left: 60%;
     max-height: 180px;
     border-radius: 30px;
     border: 5px solid #5DC1B9;
 
-
-
 }
 .imagen-censo3{
 
-    float: right;
-    position: absolute;
-    top: 55%;
-    left: 60%;
     max-height: 180px;
     border-radius: 30px;
     border: 5px solid #5DC1B9;
@@ -219,14 +206,34 @@ p {
 }
 .imagen-censo2{
 
-    float: right;
-    position: absolute;
-    top: 95%;
-    left: 60%;
     max-height: 180px;
     border-radius: 30px;
     border: 5px solid #5DC1B9;
 
+}
+
+.div-censo1{
+
+    position: absolute;
+    top: 165px;
+    left: 60%;
+
+}
+
+.div-censo2{
+
+    position: absolute;
+    top: 420px;
+    left: 60%;
+    
+}
+
+.div-censo3{
+
+    position: absolute;
+    top: 666px;
+    left: 60%;
+    
 }
 .nav-ref:hover{
 
