@@ -126,7 +126,10 @@ if len(form) > 0:
                         # Script para convertir la imagen original a una de 320x240 y otra de 800x600
 
                         # Se convierte a RGB para evitar problemas
+                        print("awa")
                         image = Image.open("tmp/" + fn).convert('RGB')
+                        print("uwu")
+                        
 
                         # Se renderiza una nueva imagen con las dimensiones 
                         new_image_320 = image.resize((320, 240))
@@ -385,10 +388,10 @@ html = f'''
                 </div>
                 <div id="popup-validado" class="overlay-ver">
                     <div class="popupBody-ver">
-                        <h4 class="tittle">{mensaje}</h4>
+                        <h4 class="tittle">Estamos procesando su información</h4>
                         <div class="popupContent">
                             <div class="form-botones">
-                                <button class="ver-button" onclick="hrefTable('principal.html')">Volver al inicio</button>
+                               
                             </div>
                         </div>
                     </div>

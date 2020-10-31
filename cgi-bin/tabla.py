@@ -115,7 +115,7 @@ print('''
                 </table>
                 <br>
                 <div class= "button-nav">
-                    <a onclick="previous_page();" class="button-ref">Anterior</a>
+                    <button onclick="previous_page();" class="button-ref">Anterior</button>
                 ''')
 for i in range(cantidad_botones+1):
     print(f'''
@@ -123,7 +123,7 @@ for i in range(cantidad_botones+1):
             ''')
 
 print('''
-                    <a onclick="next_page();" class="button-ref">Proxima</a>
+                    <button onclick="next_page();" class="button-ref">Proxima</button>
                 </div>
             </div>
         </section>
@@ -133,6 +133,8 @@ print('''
 
 domicilio_actual = 0
 
+total_fotos = 0
+total_fotos2 = 0
 for domicilio in domicilios[iden*5:(iden*5)+5]:
     
     region = db.region_by_comunaid(domicilio[2])
@@ -167,35 +169,37 @@ for domicilio in domicilios[iden*5:(iden*5)+5]:
 
     print(popup)
     
-
     for i in range(len(imagenes_mascota)):
 
-        num_im_actual = iden*5 + domicilio_actual + i
+        
         name_image = os.path.splitext(imagenes_mascota[i][0])
         
         image_html = f'''
                         <div class="div-censo{i+1}">
-                            <img class="imagen-censo{i+1}" src=/{name_image[0] + "image320" + name_image[1]} alt="Mascota" id = "mascota1" onclick="showImage('span-mascota{num_im_actual}')"><br>
+                            <img class="imagen-censo{i+1}" src=/{name_image[0] + "image320" + name_image[1]} alt="Mascota" id = "mascota1" onclick="showImage('span-mascota{total_fotos}')"><br>
                         </div>
+                        
         '''
         print(image_html)
+        total_fotos += 1
+
 
     for i in range(len(imagenes_mascota)):
 
-        num_im_actual = iden*5 + domicilio_actual +i
         name_image = os.path.splitext(imagenes_mascota[i][0])
 
         popup_image = f'''
 
                         <div class="span-div">
-                            <span class="img800" id="span-mascota{num_im_actual}">
+                            <span class="img800" id="span-mascota{total_fotos2}">
                                 <img src=/{name_image[0] + "image800" + name_image[1]} class="imagen-ampliada" alt="Mascota">
-                                <a class="cerrar" onclick="hideImage('span-mascota{num_im_actual}')">&times;</a>
+                                <a class="cerrar" onclick="hideImage('span-mascota{total_fotos2}')">&times;</a>
                             </span>
                         </div>
 
         '''
         print(popup_image)
+        total_fotos2+=1
     print('''
                     </div>
                 </div>
