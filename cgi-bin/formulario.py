@@ -11,7 +11,6 @@ import datetime
 import imghdr
 import hashlib
 import time
-from PIL import Image
 
 # Saco el formulario y acceso a la base de datos
 form = cgi.FieldStorage()
@@ -58,8 +57,7 @@ if len(form) > 0:
     )
 
     fotos_array = []
-    fotos_320 = []
-    fotos_800 = []
+
 
     # Por cada mascota, revisaremos sus fotos
     while mensaje == "Hemos recibido su información, muchas gracias por colaborar":
@@ -122,28 +120,6 @@ if len(form) > 0:
 
                             mensaje = "Archivo no soportado"
                             break
-                        
-                        # Script para convertir la imagen original a una de 320x240 y otra de 800x600
-
-                        # Se convierte a RGB para evitar problemas
-                        print("awa")
-                        image = Image.open("tmp/" + fn).convert('RGB')
-                        print("uwu")
-                        
-
-                        # Se renderiza una nueva imagen con las dimensiones 
-                        new_image_320 = image.resize((320, 240))
-                        new_image_800 = image.resize((800, 600))
-
-                        # Se guardan sus direccion, pues en caso de error hay que borrarlas
-                        name_320 = "tmp/" + name_hash + "image320" + file_extension[1]
-                        name_800 = "tmp/" + name_hash + "image800" + file_extension[1]
-
-                        # Se guardan las imagenes en el directorio
-                        new_image_320.save(name_320)
-                        fotos_320.append(name_320)
-                        new_image_800.save(name_800)
-                        fotos_800.append(name_800)
 
                     # Caso donde el archivo excede el permitido
                     else:
@@ -206,12 +182,7 @@ if len(form) > 0:
             for foto in mascota_fotos:
 
                 os.remove(foto[0])
-
-        for img in fotos_320:
-            os.remove(img)
-
-        for img in fotos_800:
-            os.remove(img)
+ 
 
 
 

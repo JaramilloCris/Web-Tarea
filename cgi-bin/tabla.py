@@ -140,7 +140,6 @@ for domicilio in domicilios[iden*5:(iden*5)+5]:
     region = db.region_by_comunaid(domicilio[2])
     comuna = db.comuna_by_id(domicilio[2])
     mascotas = db.mascota_from_domicilio(domicilio[0])
-    tipo_mascota = db.mascota_by_id(mascotas[0][1])
     imagenes_mascota = db.image_from_domicilio(domicilio[0], 3)
 
     popup = f'''
@@ -149,34 +148,46 @@ for domicilio in domicilios[iden*5:(iden*5)+5]:
                     <h2 class="tittle">Información de un censo</h2>
                     <a class="cerrar" href="#">&times;</a>
                     <div class="popupContent">
-                        <p class="font-censo">Región: <span>{region}</span></p>
-                        <p class="font-censo">Comuna: <span>{comuna}</span></p>
-                        <p class="font-censo">Calle: <span>{domicilio[3]}</span></p>
-                        <p class="font-censo">N°Calle: <span>{domicilio[4]}</span></p>
-                        <p class="font-censo">Sector: <span>{domicilio[5]}</span></p>
+                        <div>
+                            <p class="font-censo">Región: <span>{region}</span></p>
+                            <p class="font-censo">Comuna: <span>{comuna}</span></p>
+                            <p class="font-censo">Calle: <span>{domicilio[3]}</span></p>
+                            <p class="font-censo">N°Calle: <span>{domicilio[4]}</span></p>
+                            <p class="font-censo">Sector: <span>{domicilio[5]}</span></p>
+                        </div>
                         <hr class="censo">
+                        <div>
                         <p class="font-censo">Nombre: <span>{domicilio[6]}</span></p>
                         <p class="font-censo">Email: <span>{domicilio[7]}</span></p>
                         <p class="font-censo">N°Celular: <span>{domicilio[8]}</span></p>
+                        </div>
+                        '''
+    print(popup)
+    for mascota in mascotas:
+
+        tipo_mascota = db.mascota_by_id(mascota[1])
+        mascotas_html = f'''
                         <hr class="censo">
-                        <p class="font-censo">Tipo: <span>{tipo_mascota}</span></p>
-                        <p class="font-censo">Edad: <span>{mascotas[0][2]}</span></p>
-                        <p class="font-censo">Color: <span>{mascotas[0][3]}</span></p>
-                        <p class="font-censo">Raza: <span>{mascotas[0][4]}</span></p>
-                        <p class="font-censo">Esterilizado: <span>{db.esterilizado(mascotas[0][5])}</span></p>
-                        <p class="font-censo">Vacunas al día: <span>{db.esterilizado(mascotas[0][6])}</span></p>
+                        <div>
+                            <p class="font-censo">Tipo: <span>{tipo_mascota}</span></p>
+                            <p class="font-censo">Edad: <span>{mascota[2]}</span></p>
+                            <p class="font-censo">Color: <span>{mascota[3]}</span></p>
+                            <p class="font-censo">Raza: <span>{mascota[4]}</span></p>
+                            <p class="font-censo">Esterilizado: <span>{db.esterilizado(mascota[5])}</span></p>
+                            <p class="font-censo">Vacunas al día: <span>{db.esterilizado(mascota[6])}</span></p>
+                        </div>
     '''
 
-    print(popup)
+        print(mascotas_html)
     
     for i in range(len(imagenes_mascota)):
 
         
-        name_image = os.path.splitext(imagenes_mascota[i][0])
+        name_image = imagenes_mascota[i][0]
         
         image_html = f'''
                         <div class="div-censo{i+1}">
-                            <img class="imagen-censo{i+1}" src=/{name_image[0] + "image320" + name_image[1]} alt="Mascota" id = "mascota1" onclick="showImage('span-mascota{total_fotos}')"><br>
+                            <img class="imagen-censo{i+1}" src=/{name_image} width="320" height="240" alt="Mascota" id = "mascota1" onclick="showImage('span-mascota{total_fotos}')"><br>
                         </div>
                         
         '''
@@ -186,13 +197,13 @@ for domicilio in domicilios[iden*5:(iden*5)+5]:
 
     for i in range(len(imagenes_mascota)):
 
-        name_image = os.path.splitext(imagenes_mascota[i][0])
+        name_image = imagenes_mascota[i][0]
 
         popup_image = f'''
 
                         <div class="span-div">
                             <span class="img800" id="span-mascota{total_fotos2}">
-                                <img src=/{name_image[0] + "image800" + name_image[1]} class="imagen-ampliada" alt="Mascota">
+                                <img src=/{name_image}  width="800" height="600" class="imagen-ampliada" alt="Mascota">
                                 <a class="cerrar" onclick="hideImage('span-mascota{total_fotos2}')">&times;</a>
                             </span>
                         </div>
