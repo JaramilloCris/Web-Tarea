@@ -28,7 +28,7 @@ html = f'''
             <h1 class="titulo">Estadisticas</h1>
             <p class="subtitulo">La mejor pagina para buscar mascotas</p>
         </header>
-        <section class="t-section">
+        <div class="t-section">
             <div class="nav-div">
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
@@ -39,21 +39,21 @@ html = f'''
             </div>
             <div class="container-content">
                 <div>
-                    <h1 class="tittle">Grafico de censos diarios</h1>
+                    <h2 class="tittle">Grafico de censos diarios</h2>
                     <img src="/img/graficos/grafico1.png" alt="Image" class="imagen-graficos">
                 </div>
                 <hr class="new">
                 <div>
-                    <h1 class="tittle">Grafico de los distintos tipos de mascotas</h1>
+                    <h2 class="tittle">Grafico de los distintos tipos de mascotas</h2>
                     <img src="/img/graficos/grafico2.png" alt="Image" class="imagen-graficos">
                 </div>
                 <hr class="new">
                 <div>
-                    <h1 class="tittle">Grafico de Perros v/s Gatos</h1>
+                    <h2 class="tittle">Grafico de Perros v/s Gatos</h2>
                     <img src="/img/graficos/grafico3.png" alt="Image" class="imagen-graficos">
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </body>
 </html>

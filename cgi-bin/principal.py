@@ -33,7 +33,7 @@ html = f'''
             <h1 class="titulo">Animalitos</h1>
             <p class="subtitulo">La mejor pagina para buscar mascotas</p>
         </header>
-        <section class="t-section">
+        <div class="t-section">
             <div class="nav-div">
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
@@ -90,7 +90,7 @@ html2 = '''
                 </div><br>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </body></html>
 '''

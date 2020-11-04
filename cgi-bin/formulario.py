@@ -11,6 +11,7 @@ import datetime
 import imghdr
 import hashlib
 import time
+import html
 
 # Saco el formulario y acceso a la base de datos
 form = cgi.FieldStorage()
@@ -45,15 +46,15 @@ if len(form) > 0:
     state_result = 'visible'
 
     # Id de la comuna
-    id_comuna = db.get_comuna_id(form["comuna"].value)
+    id_comuna = db.get_comuna_id(html.escape(form["comuna"].value))
 
     # Data sobre el domicilio
     data_domicilio = (
 
         datetime.datetime.now(), id_comuna, \
-            form["calle"].value, form["numero"].value, \
-                form["sector"].value, form["nombre"].value, form["email"].value, \
-                    form["celular"].value
+            html.escape(form["calle"].value), html.escape(form["numero"].value), \
+                html.escape(form["sector"].value), html.escape(form["nombre"].value), html.escape(form["email"].value), \
+                    html.escape(form["celular"].value)
     )
 
     fotos_array = []
@@ -153,11 +154,11 @@ if len(form) > 0:
             # Valores
             tipo_mascota = int(form["tipo-mascota"][i].value) if type(form["tipo-mascota"]) == list else int(form["tipo-mascota"].value)
             edad_mascota = int(form["edad-mascota"][i].value) if type(form["edad-mascota"]) == list else int(form["edad-mascota"].value)
-            color_mascota = form["color-mascota"][i].value if type(form["color-mascota"]) == list else form["color-mascota"].value
-            raza_mascota = form["raza-mascota"][i].value if type(form["raza-mascota"]) == list else form["raza-mascota"].value
+            color_mascota = html.escape(form["color-mascota"][i].value if type(form["color-mascota"]) == list else form["color-mascota"].value)
+            raza_mascota = html.escape(form["raza-mascota"][i].value if type(form["raza-mascota"]) == list else form["raza-mascota"].value)
             esterilizado_mascota = int(form["esterilizado-mascota"][i].value) if type(form["esterilizado-mascota"]) == list else int(form["esterilizado-mascota"].value)
             vacunas_mascota = int(form["vacunas-mascota"][i].value) if type(form["vacunas-mascota"]) == list else int(form["vacunas-mascota"].value)
-            otro_mascota = form["otro-mascota"][i].value if type(form["otro-mascota"]) == list else form["otro-mascota"].value
+            otro_mascota = html.escape(form["otro-mascota"][i].value if type(form["otro-mascota"]) == list else form["otro-mascota"].value)
         
             # El usuario ingresara una nueva mascota
             if tipo_mascota == 9:
@@ -191,8 +192,9 @@ html = f'''
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta content="utf-8" http-equiv="encoding">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Animalitos</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -210,7 +212,7 @@ html = f'''
             <h1 class="titulo">Formulario de mascotas</h1>
             <p class="subtitulo">La mejor pagina para buscar mascotas</p>
         </header>
-        <section id="principal-section" class="t-section">
+        <div id="principal-section" class="t-section">
             <div class="nav-div">
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
@@ -251,7 +253,7 @@ html = f'''
                                 <option value="13">Los Ríos</option>
                                 <option value="14">Los Lagos</option>
                                 <option value="15">Aisén del Gral. Carlos Ibáñez del Campo</option>
-                                <option value="15">Magallanes y de la Antártica Chilena</option>
+                                <option value="16">Magallanes y de la Antártica Chilena</option>
                             </select>
                             <select class="select-custom" name="comuna" id="comuna">
                                 <option value="0">Comunas por Region</option>
@@ -370,12 +372,12 @@ html = f'''
                 <div id="popup-error" class="overlay-ver">
                     <div class="popup-error">
                         <h4 class="tittle" id="mensaje-error">Error</h4>
-                        <h4 class="tittle" id="mensaje-error1"></h4>
+                        <h4 class="tittle" id="mensaje-error1">Algo ha fallado</h4>
                         <a class="cerrar" href="#">&times;</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </body>
     <script>

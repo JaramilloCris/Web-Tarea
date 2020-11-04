@@ -51,7 +51,7 @@ html = f'''
             <h1 class="titulo">Animalitos</h1>
             <p class="subtitulo">La mejor pagina para buscar mascotas</p>
         </header>
-        <section class="t-section">
+        <div class="t-section">
             <div class="nav-div">
                 <nav class="nav-bar">
                     <a href="principal.py" class="nav-ref"><span class="nav-item"></span>Principal</a>
@@ -119,14 +119,14 @@ print('''
                 ''')
 for i in range(cantidad_botones+1):
     print(f'''
-                    <a onclick = "update_page({i}, {cantidad_botones})" href=tabla.py?id={i} class="button-ref">{i+1}</a>
+                    <a onclick = "update_page({i}, {cantidad_botones})" href="tabla.py?id={i}" class="button-ref">{i+1}</a>
             ''')
 
 print('''
                     <button onclick="next_page();" class="button-ref">Proxima</button>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
     ''')
 
