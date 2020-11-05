@@ -7,11 +7,7 @@ print("")
 import cgi, os
 import cgitb; cgitb.enable()
 import save_db as sd
-import datetime
-import imghdr
-import hashlib
-import time
-import html
+import datetime, hashlib, time, html, re, filetype
 
 # Saco el formulario y acceso a la base de datos
 form = cgi.FieldStorage()
@@ -35,6 +31,10 @@ imagen_accept = ["jpg", "png", "jpeg"]
 size = 0
 tipo_real = ""
 
+#Tipos de mascotas disponible en la base de datos
+tipos_mascotas = db.get_tipos_mascotas()
+largo_tipos = len(tipos_mascotas)
+
 # Mascota revisando actual
 actual_mascota = 0
 
@@ -48,17 +48,40 @@ if len(form) > 0:
     # Id de la comuna
     id_comuna = db.get_comuna_id(html.escape(form["comuna"].value))
 
+    calle = html.escape(form["calle"].value)
+    numero = html.escape(form["numero"].value)
+    sector = html.escape(form["sector"].value)
+    nombre = html.escape(form["nombre"].value)
+    email = html.escape(form["email"].value)
+    celular = html.escape(form["celular"].value)
+
+    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    # Validaciones servidor
+    if len(calle) > 250 or calle == None:
+        mensaje = "Nombre de calle invalido"
+
+    elif len(numero) > 20 or numero == None:
+        mensaje = "Numero de calle invalido"
+
+    elif len(sector) > 100 or sector == None:
+        mensaje = "Sector invalido"
+
+    elif len(nombre) > 200 or nombre == None:
+        mensaje = "Nombre de contacto invalido"
+    
+
+    elif re.search(regex,email) == False:  
+        mensaje = "Correo invalido"
+
+
+
     # Data sobre el domicilio
     data_domicilio = (
 
         datetime.datetime.now(), id_comuna, \
-            html.escape(form["calle"].value), html.escape(form["numero"].value), \
-                html.escape(form["sector"].value), html.escape(form["nombre"].value), html.escape(form["email"].value), \
-                    html.escape(form["celular"].value)
-    )
+            calle, numero, sector, nombre, email, celular)
 
     fotos_array = []
-
 
     # Por cada mascota, revisaremos sus fotos
     while mensaje == "Hemos recibido su información, muchas gracias por colaborar":
@@ -116,8 +139,8 @@ if len(form) > 0:
                         fotos_actual_mascota.append(data_foto)
 
                         # Script que verifica el tipo
-                        tipo_real = imghdr.what("tmp/" + fn)
-                        if tipo_real == None or tipo_real not in imagen_accept:
+                        tipo_real = filetype.guess("./tmp/" + fn)
+                        if tipo_real == None or "image" not in tipo_real.mime:
 
                             mensaje = "Archivo no soportado"
                             break
@@ -159,9 +182,31 @@ if len(form) > 0:
             esterilizado_mascota = int(form["esterilizado-mascota"][i].value) if type(form["esterilizado-mascota"]) == list else int(form["esterilizado-mascota"].value)
             vacunas_mascota = int(form["vacunas-mascota"][i].value) if type(form["vacunas-mascota"]) == list else int(form["vacunas-mascota"].value)
             otro_mascota = html.escape(form["otro-mascota"][i].value if type(form["otro-mascota"]) == list else form["otro-mascota"].value)
+
+            if tipo_mascota == None:
+                mensaje = "Tipo de mascota invalido"
+                break
+            elif edad_mascota < 0 or type(edad_mascota) != int:
+                mensaje = "Edad mascota invalida"
+                break
+            elif len(color_mascota) > 30:
+                mensaje = "Color mascota invalido"
+                break
+            elif len(raza_mascota) > 30:
+                mensaje = "Raza mascota invalido"
+                break
+            elif esterilizado_mascota == None:
+                mensaje = "Esterilizado invalido"
+                break
+            elif vacunas_mascota == None:
+                mensaje = "Vacunas mascotas invalidos"
+                break
+            elif tipo_mascota == largo_tipos and (otro_mascota != "" or otro_mascota != None) and len(otro_mascota) > 40:
+                mensaje = "Otra mascota invalida"
+                break
         
             # El usuario ingresara una nueva mascota
-            if tipo_mascota == 9:
+            if tipo_mascota == largo_tipos + 1:
                 
                 # Si no se encuentra en la base de datos, la incluyo
                 if db.id_mascota_by_name(otro_mascota) == []:
@@ -185,10 +230,7 @@ if len(form) > 0:
                 os.remove(foto[0])
  
 
-
-
-
-html = f'''
+print(f'''
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -291,15 +333,13 @@ html = f'''
                             <br>
                             <select id="raza0" class="select-custom" name="tipo-mascota" onchange="hideInput('raza0','text-value0')" required="required">
                                 <option value="">Seleccione un tipo</option>
-                                <option value="1">Perro</option>
-                                <option value="2">Gato</option>
-                                <option value="3">Pez</option>
-                                <option value="4">Tortuga</option>
-                                <option value="5">Hámster</option>
-                                <option value="6">Loro</option>
-                                <option value="7">Iguana</option>
-                                <option value="8">Araña</option>
-                                <option value="9">Otro</option>
+                                ''')
+
+for tipo in tipos_mascotas:
+    print(f'''                  <option value="{tipo[0]}">{tipo[1]}</option>''')
+print(f'''
+
+                                <option value="{largo_tipos + 1}">Otro</option>
                             </select>
                             <input hidden id="text-value0" name="otro-mascota" class="input-style" size="40" maxlength="40" placeholder="Otro...">
                         </div>
@@ -386,5 +426,5 @@ html = f'''
     
     </script>
 </html>
-'''
-print(html)
+''')
+print(largo_tipos)

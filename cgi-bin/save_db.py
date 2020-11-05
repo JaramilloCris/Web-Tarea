@@ -13,7 +13,7 @@ class AnimalitosDb:
             host = "localhost",
             user = user,
             password = password,
-            database = "tarea2"
+            database = "cc500234_db"
         )
         self.cursor = self.db.cursor()
 
@@ -190,6 +190,15 @@ class AnimalitosDb:
         '''
         self.cursor.execute(sql)
         return self.cursor.fetchall()[0][0]
+
+    def get_tipos_mascotas(self):
+
+        sql = f'''
+        SELECT * FROM tipo_mascota
+
+        '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
 
     def esterilizado(self, value):
 
