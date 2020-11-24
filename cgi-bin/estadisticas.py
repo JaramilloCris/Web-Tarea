@@ -17,10 +17,13 @@ html = f'''
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/principal.css"/>
     <link rel="icon" type="image/jpeg" href="img/simon.jpeg">
-    <link rel="script" href="/js/principal.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="/js/graficos.js"></script>
+
+    
 
 </head>
-<body class="main">
+<body class="main" onload="initApp()">
 
     <div class="principal-container mx-auto">
 
@@ -38,24 +41,26 @@ html = f'''
                 </nav>
             </div>
             <div class="container-content">
-                <div>
+                <div class="imagen-graficos">
                     <h2 class="tittle">Grafico de censos diarios</h2>
-                    <img src="/img/graficos/grafico1.png" alt="Image" class="imagen-graficos">
+                    <canvas id="censos-diarios"></canvas>
                 </div>
+
                 <hr class="new">
-                <div>
+                <div class="imagen-graficos" style="width: 50%; left: 27%">
                     <h2 class="tittle">Grafico de los distintos tipos de mascotas</h2>
-                    <img src="/img/graficos/grafico2.png" alt="Image" class="imagen-graficos">
+                    <canvas id="cantidad-mascotas"></canvas>
                 </div>
                 <hr class="new">
-                <div>
+                <div class="imagen-graficos">
                     <h2 class="tittle">Grafico de Perros v/s Gatos</h2>
-                    <img src="/img/graficos/grafico3.png" alt="Image" class="imagen-graficos">
+                    <canvas id="gatos-perros"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 
 '''

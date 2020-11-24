@@ -208,3 +208,55 @@ class AnimalitosDb:
             return "Si"
         else:
             "No aplica"
+
+
+
+    # -------------------- Funciones para graficos ---------------------
+
+
+    def read_date(self):
+
+        """
+        Entrega la consulta sql con la cantidad de censos realizados por dias
+        :return: Consulta SQL
+        """
+
+        sql = f'''SELECT DATE(fecha_ingreso) Date, COUNT(DISTINCT id) totalCOunt FROM domicilio GROUP BY DATE(fecha_ingreso);'''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def read_mascotas(self):
+
+        """
+        Entrega la consulta sql con la cantidad de las distintas mascotas presentes en la base de datos
+        :return: Consulta SQL
+        """
+
+        sql = f'''SELECT nombre, cantidad FROM tipo_mascota INNER JOIN (SELECT tipo_mascota_id, COUNT(tipo_mascota_id) AS cantidad FROM mascota_domicilio GROUP BY tipo_mascota_id) AS F ON tipo_mascota.id = f.tipo_mascota_id 
+
+        '''
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def read_gatos_perros(self):
+
+        """
+        Entrega una consulta sql con la cantidad de perros y gatos censados en cada mes
+        :return: Consulta SQL
+        """
+
+        sql = '''SELECT Fecha, coalesce(Perros, 0) AS Perros, coalesce(Gatos, 0) AS Gatos FROM (
+
+
+            SELECT * FROM (SELECT Fecha1, COUNT(tipo_mascota_id) AS Perros FROM (SELECT EXTRACT(YEAR_MONTH FROM fecha_ingreso) AS Fecha1, tipo_mascota_id FROM (SELECT fecha_ingreso, tipo_mascota_id FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS masct WHERE masct.tipo_mascota_id = 1) AS conteo GROUP BY Fecha1) AS table1
+
+            LEFT JOIN (SELECT Fecha, COUNT(tipo_mascota_id) AS Gatos FROM (SELECT EXTRACT(YEAR_MONTH FROM fecha_ingreso) AS Fecha, tipo_mascota_id FROM (SELECT fecha_ingreso, tipo_mascota_id FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS masct WHERE masct.tipo_mascota_id = 2) AS conteo GROUP BY Fecha) AS table2 ON table1.Fecha1 = table2.Fecha
+
+            UNION
+
+            SELECT * FROM (SELECT Fecha1, COUNT(tipo_mascota_id) AS Perros FROM (SELECT EXTRACT(YEAR_MONTH FROM fecha_ingreso) AS Fecha1, tipo_mascota_id FROM (SELECT fecha_ingreso, tipo_mascota_id FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS masct WHERE masct.tipo_mascota_id = 1) AS conteo GROUP BY Fecha1) AS table1
+
+            RIGHT JOIN (SELECT Fecha, COUNT(tipo_mascota_id) AS Gatos FROM (SELECT EXTRACT(YEAR_MONTH FROM fecha_ingreso) AS Fecha, tipo_mascota_id FROM (SELECT fecha_ingreso, tipo_mascota_id FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS masct WHERE masct.tipo_mascota_id = 2) AS conteo GROUP BY Fecha) AS table2 ON table1.Fecha1 = table2.Fecha) AS uwu'''
+
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()

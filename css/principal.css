@@ -179,15 +179,12 @@ p {
     border: 5px solid #5DC1B9;
 }
 
-.imagen-graficos{
-    
-    border: 5px solid #5DC1B9;
+.imagen-graficos {
     margin-top: 10px;
-    margin-bottom: 50px;
-    margin-left: 25%;
-    height: 100%;
-    width: 60%;
-
+    width: 68%;
+    align-content: center;
+    position: relative;
+    left: 19%;
 }
 
 .imagen-censo1{
