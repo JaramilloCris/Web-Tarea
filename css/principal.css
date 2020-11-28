@@ -699,3 +699,32 @@ hr.censo{
 
 
 }
+
+/* CSS para el mapa */
+
+.bloque-principal{
+
+    overflow-y: auto;
+    width: 320px;
+    height: 180px;
+
+}
+
+.seccion-foto{
+    height: 170px;
+}
+
+.bloque-texto-foto{
+
+    position: relative;
+    left: 163px;
+    top: -134px;
+    width: 120px;
+}
+
+.texto-foto{
+
+    font-weight: bold;
+
+
+}

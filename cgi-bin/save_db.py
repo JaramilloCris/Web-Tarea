@@ -13,7 +13,7 @@ class AnimalitosDb:
             host = "localhost",
             user = user,
             password = password,
-            database = "cc500234_db"
+            database = "tarea2"
         )
         self.cursor = self.db.cursor()
 

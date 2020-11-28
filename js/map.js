@@ -30,7 +30,25 @@ function date(a){
             console.log(comunas["lat"]);
             let arr = [comunas["lat"], comunas["lng"]];
             var marker = L.marker(arr).addTo(mymap);
-            marker.bindPopup(`<b>${comunas["name"]}</b><br>I am a popup.`);
+            var html =`
+                        <div class = "bloque-principal">
+                            <div class="seccion-foto">
+                                <div>
+                                    <img src="http://localhost:8000/img/img.jpeg" width="150" height="150">
+                                </div>
+                                <div class="bloque-texto-foto">
+                                    <a class="texto-foto">Tipo de mascota: </a><a>Perro</a><br>
+                                    <a class="texto-foto">Edad: </a><a>Perro</a><br>
+                                    <a class="texto-foto">Color: </a><a>Perro</a><br>
+                                    <a class="texto-foto">Raza: </a><a>Perro</a><br>
+                                    <a class="texto-foto">Esterilizado: </a><a>Imagen</a><br>
+                                    <a class="texto-foto">Vacunas: </a><a>Imagen</a><br>
+                                    <a class="texto-foto" href="">Ver Censo</a>
+                                </div>
+                            </div>
+                        </div>
+                        `
+            marker.bindPopup(html);
         }
 
     }
