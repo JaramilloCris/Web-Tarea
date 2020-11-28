@@ -18,10 +18,17 @@ html = f'''
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Animalitos</title>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/principal.css" />
+
     <link rel="icon" type="image/jpeg" href="img/foton.png">
     <link rel="script" href="/js/principal.js">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
 
 </head>
 
@@ -52,6 +59,7 @@ html = f'''
                     <p style="line-height: 110%; text-align: center">Animalitos es la primera pagina web encargada de realizar
                         un censo a las mascotas del país <br></p>
                 </div>
+                <div id="mapid" style="width: 600px; height: 400px;"></div>
                 <div class="container-me">
 
                     <h2>Últimas mascotas informadas</h2>
@@ -92,6 +100,10 @@ html2 = '''
             </div>
         </div>
     </div>
-</body></html>
+</body>
+<script type="text/javascript" src="/js/regiones.json"></script>
+<script src="/js/map.js"></script>
+
+</html>
 '''
 print(html2)
