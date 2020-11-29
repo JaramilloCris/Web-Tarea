@@ -13,7 +13,7 @@ class AnimalitosDb:
             host = "localhost",
             user = user,
             password = password,
-            database = "tarea2"
+            database = "cc500234_db"
         )
         self.cursor = self.db.cursor()
 
@@ -257,6 +257,24 @@ class AnimalitosDb:
             SELECT * FROM (SELECT Fecha1, COUNT(tipo_mascota_id) AS Perros FROM (SELECT EXTRACT(YEAR_MONTH FROM fecha_ingreso) AS Fecha1, tipo_mascota_id FROM (SELECT fecha_ingreso, tipo_mascota_id FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS masct WHERE masct.tipo_mascota_id = 1) AS conteo GROUP BY Fecha1) AS table1
 
             RIGHT JOIN (SELECT Fecha, COUNT(tipo_mascota_id) AS Gatos FROM (SELECT EXTRACT(YEAR_MONTH FROM fecha_ingreso) AS Fecha, tipo_mascota_id FROM (SELECT fecha_ingreso, tipo_mascota_id FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS masct WHERE masct.tipo_mascota_id = 2) AS conteo GROUP BY Fecha) AS table2 ON table1.Fecha1 = table2.Fecha) AS uwu'''
+
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+
+
+    def read_censos(self):
+
+        """
+        Entrega una consulta sql con los censos realizados por comuna
+        :return:
+        """
+
+        sql = '''SELECT nombre AS tipo, nombre_comuna, ruta_archivo, vacunas_al_dia, esterilizado, raza, color ,edad 
+        FROM (SELECT dom_id, mas_id, tipo_mascota_id, edad, color, raza, esterilizado, vacunas_al_dia, ruta_archivo, nombre AS nombre_comuna 
+        FROM (SELECT * FROM (SELECT domicilio.id AS dom_id, comuna_id, mascota_domicilio.id AS mas_id, tipo_mascota_id, edad, color, raza, esterilizado, vacunas_al_dia FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS table1 INNER JOIN foto_mascota ON table1.mas_id = foto_mascota.mascota_domicilio_id) AS table2 INNER JOIN comuna ON table2.comuna_id = comuna.id) AS table3 INNER JOIN tipo_mascota ON table3.tipo_mascota_id = tipo_mascota.id 
+        
+        '''
 
         self.cursor.execute(sql)
         return self.cursor.fetchall()

@@ -1,4 +1,4 @@
-#!C:\Users\Tobal\AppData\Local\Programs\Python\Python37\python.exe
+#!C:\Users\groso\AppData\Local\Programs\Python\Python37\python.exe
 # -*- coding: utf-8 -*-
 
 import save_db as sd
@@ -17,15 +17,22 @@ db = sd.AnimalitosDb("root", "")
 
 try:
 
-    messages = db.read_mascotas()
+    messages = db.read_censos()
     msg = {}
     mascotas = []
     cantidad = []
     k = 0
     for i in messages:
 
-        mascotas.append(messages[k][0])
-        cantidad.append(messages[k][1])
+        comuna = messages[k][1]
+        arr = [messages[k][0], messages[k][2], messages[k][3], messages[k][4], messages[k][5], messages[k][6], messages[k][7]]
+        if comuna in msg:
+
+            msg[comuna].append(arr)
+
+        else:
+            msg[comuna] = [arr]
+
         k += 1
 
     msg[0] = mascotas

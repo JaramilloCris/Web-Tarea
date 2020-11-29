@@ -1,4 +1,4 @@
-#!C:\Users\Tobal\AppData\Local\Programs\Python\Python37-32\python.exe
+#!C:\Users\groso\AppData\Local\Programs\Python\Python37-32\python.exe
 # -*- coding: utf-8 -*-
 
 print("Content-type: text/html; charset=UTF-8")
