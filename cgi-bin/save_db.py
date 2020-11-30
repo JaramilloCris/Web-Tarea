@@ -270,10 +270,9 @@ class AnimalitosDb:
         :return:
         """
 
-        sql = '''SELECT nombre AS tipo, nombre_comuna, ruta_archivo, vacunas_al_dia, esterilizado, raza, color ,edad 
+        sql = '''SELECT nombre AS tipo, nombre_comuna, ruta_archivo, vacunas_al_dia, esterilizado, raza, color ,edad, dom_id 
         FROM (SELECT dom_id, mas_id, tipo_mascota_id, edad, color, raza, esterilizado, vacunas_al_dia, ruta_archivo, nombre AS nombre_comuna 
         FROM (SELECT * FROM (SELECT domicilio.id AS dom_id, comuna_id, mascota_domicilio.id AS mas_id, tipo_mascota_id, edad, color, raza, esterilizado, vacunas_al_dia FROM domicilio INNER JOIN mascota_domicilio ON domicilio.id = mascota_domicilio.domicilio_id) AS table1 INNER JOIN foto_mascota ON table1.mas_id = foto_mascota.mascota_domicilio_id) AS table2 INNER JOIN comuna ON table2.comuna_id = comuna.id) AS table3 INNER JOIN tipo_mascota ON table3.tipo_mascota_id = tipo_mascota.id 
-        
         '''
 
         self.cursor.execute(sql)

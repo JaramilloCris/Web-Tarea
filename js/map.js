@@ -20,7 +20,7 @@ let a = fetch("/js/regiones.json")
 
 function date(a){
 
-        let xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open('GET', '/cgi-bin/read_censos.py');
     xhr.send();
     xhr.timeout = 3000;
@@ -33,7 +33,6 @@ function date(a){
         for (let llave of regiones) {
 
             for (let comunas of a[llave]) {
-                console.log(comunas["lat"]);
                 let arr = [comunas["lat"], comunas["lng"]];
 
                 if (messages.hasOwnProperty(comunas["name"])){
@@ -59,6 +58,8 @@ function date(a){
                         }
 
                         var direccion_imagen = "/".concat(arreglo_comuna[1]);
+                        console.log(arreglo_comuna);
+                        let id  = Math.trunc(arreglo_comuna[7] / 5);
                         html = html.concat(`
                                     <div class="seccion-foto">
                                         <div>
@@ -71,7 +72,7 @@ function date(a){
                                             <a class="texto-foto">Raza: </a><a>${arreglo_comuna[4]}</a><br>
                                             <a class="texto-foto">Esterilizado: </a><img src=${imagen_est} width="15" height="15"><br>
                                             <a class="texto-foto">Vacunas: </a><img src=${imagen_vacunas} width="15" height="15"><br>
-                                            <a class="texto-foto" href="">Ver Censo</a>
+                                            <a class="texto-foto" href="tabla.py?id=${id}#popup${arreglo_comuna[7]}">Ver Censo</a>
                                         </div>
                                     </div>
                                 `)

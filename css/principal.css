@@ -695,7 +695,12 @@ hr.censo{
         font-size: 100%;
 }
 
-#mapid { height: 180px; }
+#mapid {
+
+    width: 600px;
+    height: 400px;
+
+}
 
 
 }

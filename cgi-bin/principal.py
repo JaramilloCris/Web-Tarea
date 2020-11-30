@@ -59,7 +59,12 @@ html = f'''
                     <p style="line-height: 110%; text-align: center">Animalitos es la primera pagina web encargada de realizar
                         un censo a las mascotas del país <br></p>
                 </div>
-                <div id="mapid" style="width: 600px; height: 400px;"></div>
+                <h2>Mapa de censos</h2>
+                <hr class="new">
+                <div style = "position: relative; left: 15%">
+                    <div id="mapid" style="width: 70%; height: 400px; margin-bottom: 50px; display: inline-block;"></div>
+                </div>
+                
                 <div class="container-me">
 
                     <h2>Últimas mascotas informadas</h2>

@@ -100,7 +100,7 @@ for domicilio in domicilios[iden*5:(iden*5)+5]:
 
     tabla = f'''
 
-                    <tr onclick="hrefTable('#popup{domicilio_actual}')">
+                    <tr onclick="hrefTable('#popup{domicilio[0]}')">
                         <td>{domicilio[1]}</td>
                         <td>{comuna}</td>
                         <td>{domicilio[3]}</td>
@@ -143,7 +143,7 @@ for domicilio in domicilios[iden*5:(iden*5)+5]:
     imagenes_mascota = db.image_from_domicilio(domicilio[0], 3)
 
     popup = f'''
-            <div id="popup{domicilio_actual}" class="overlay">
+            <div id="popup{domicilio[0]}" class="overlay">
                 <div class="popupBody">
                     <h2 class="tittle">Información de un censo</h2>
                     <a class="cerrar" href="#">&times;</a>

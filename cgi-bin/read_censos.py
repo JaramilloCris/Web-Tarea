@@ -25,7 +25,7 @@ try:
     for i in messages:
 
         comuna = messages[k][1]
-        arr = [messages[k][0], messages[k][2], messages[k][3], messages[k][4], messages[k][5], messages[k][6], messages[k][7]]
+        arr = [messages[k][0], messages[k][2], messages[k][3], messages[k][4], messages[k][5], messages[k][6], messages[k][7], messages[k][8]]
         if comuna in msg:
 
             msg[comuna].append(arr)
